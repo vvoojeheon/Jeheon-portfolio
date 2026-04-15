@@ -9,300 +9,377 @@
     content="Jeheon Woo | Urban researcher working on urban networks, uneven development, mobility, and spatial analysis."
   />
   <style>
-    :root{
-      --bg:#f3f3ef;
-      --paper:#fbfbf8;
-      --text:#111111;
-      --muted:#666666;
-      --line:#d8d8d1;
-      --max:1180px;
+    :root {
+      --bg: #f3f3ef;
+      --paper: #fbfbf8;
+      --text: #111111;
+      --muted: #666666;
+      --line: #d8d8d1;
+      --max: 1180px;
+      --nav-h: 72px;
     }
 
-    *{box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-      line-height:1.72;
-      letter-spacing:0.01em;
+    * {
+      box-sizing: border-box;
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
+    html {
+      scroll-behavior: smooth;
     }
 
-    a:hover{
-      opacity:.72;
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.72;
+      letter-spacing: 0.01em;
     }
 
-    .wrap{
-      width:min(100% - 40px,var(--max));
-      margin:0 auto;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .hero{
-      padding:78px 0 44px;
-      display:grid;
-      grid-template-columns:1.6fr .92fr;
-      gap:42px;
-      align-items:start;
+    a:hover {
+      opacity: 0.72;
     }
 
-    .title{
-      font-size:clamp(3.9rem,7.6vw,6.9rem);
-      font-weight:800;
-      line-height:.93;
-      letter-spacing:-.06em;
-      margin:0 0 28px;
-      max-width:760px;
+    .wrap {
+      width: min(100% - 40px, var(--max));
+      margin: 0 auto;
     }
 
-    .problem{
-      font-size:1.34rem;
-      color:var(--muted);
-      max-width:720px;
-      margin:0;
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(243, 243, 239, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
     }
 
-    .profile{
-      border:1px solid var(--line);
-      background:var(--paper);
-      padding:24px;
+    .topbar-inner {
+      min-height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
 
-    .profile img{
-      width:100%;
-      aspect-ratio:4/5;
-      object-fit:cover;
-      display:block;
-      margin-bottom:18px;
-      background:#ecece7;
+    .brand {
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
     }
 
-    .name{
-      font-size:2.8rem;
-      font-weight:800;
-      letter-spacing:-.045em;
-      line-height:.95;
-      margin:0 0 8px;
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: flex-end;
     }
 
-    .email{
-      font-size:1rem;
-      color:var(--muted);
-      margin-bottom:18px;
+    .nav a {
+      font-size: 0.95rem;
+      color: var(--muted);
     }
 
-    .downloads{
-      display:grid;
-      gap:10px;
+    .hero {
+      padding: 56px 0 44px;
+      display: grid;
+      grid-template-columns: 1.55fr 0.95fr;
+      gap: 46px;
+      align-items: start;
     }
 
-    .download-btn{
-      display:block;
-      padding:11px 14px;
-      border:1px solid var(--line);
-      background:#fff;
-      font-size:.98rem;
+    .title {
+      font-size: clamp(4rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.93;
+      letter-spacing: -0.065em;
+      margin: 0 0 24px;
+      max-width: 760px;
     }
 
-    .section{
-      padding:36px 0;
-      border-top:1px solid var(--line);
+    .problem {
+      font-size: 1.28rem;
+      color: var(--muted);
+      margin: 0;
+      max-width: 760px;
     }
 
-    .section h2{
-      font-size:1.6rem;
-      line-height:1.08;
-      letter-spacing:-.03em;
-      margin:0 0 18px;
+    .hero-meta {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      max-width: 760px;
     }
 
-    .text{
-      max-width:880px;
-      font-size:1.05rem;
-      margin:0 0 14px;
+    .meta-block h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
 
-    .abstract{
-      background:var(--paper);
-      border:1px solid var(--line);
-      padding:24px;
+    .meta-block p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.65;
     }
 
-    .featured-box{
-      margin-top:8px;
+    .profile {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      padding: 24px;
     }
 
-    .featured-title{
-      font-weight:700;
-      font-size:1.08rem;
-      letter-spacing:-.01em;
-      margin-bottom:6px;
+    .profile img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 18px;
+      background: #ecece7;
     }
 
-    .featured-meta{
-      font-size:.95rem;
-      color:var(--muted);
-      margin-bottom:12px;
+    .name {
+      font-size: 2.9rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      margin: 0 0 8px;
     }
 
-    .research-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-      margin-top:22px;
+    .email {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 18px;
     }
 
-    .figure-card{
-      background:var(--paper);
-      border:1px solid var(--line);
-      padding:14px;
+    .downloads {
+      display: grid;
+      gap: 10px;
     }
 
-    .figure-card img{
-      width:100%;
-      display:block;
-      background:#ecece7;
-      margin-bottom:10px;
+    .download-btn {
+      display: block;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-size: 0.98rem;
     }
 
-    .caption{
-      font-size:.95rem;
-      color:var(--muted);
+    .section {
+      padding: 40px 0;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: calc(var(--nav-h) + 20px);
     }
 
-    .list{
-      display:grid;
-      gap:18px;
+    .section h2 {
+      font-size: 1.62rem;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin: 0 0 18px;
     }
 
-    .item{
-      padding-bottom:18px;
-      border-bottom:1px solid var(--line);
+    .text {
+      max-width: 880px;
+      font-size: 1.05rem;
+      margin: 0 0 14px;
     }
 
-    .item:last-child{
-      padding-bottom:0;
-      border-bottom:none;
+    .abstract {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 24px;
     }
 
-    .item-title{
-      font-weight:700;
-      font-size:1.06rem;
-      letter-spacing:-.01em;
+    .featured-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
     }
 
-    .item-meta{
-      font-size:.95rem;
-      color:var(--muted);
-      margin-top:4px;
+    .featured-meta {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 12px;
     }
 
-    .applied-grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:18px;
-      margin-top:20px;
+    .research-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 22px;
     }
 
-    .applied-card{
-      background:var(--paper);
-      border:1px solid var(--line);
-      padding:14px;
+    .figure-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 14px;
     }
 
-    .applied-card img{
-      width:100%;
-      display:block;
-      margin-bottom:10px;
-      background:#ecece7;
+    .figure-card img {
+      width: 100%;
+      display: block;
+      background: #ecece7;
+      margin-bottom: 10px;
     }
 
-    .applied-title{
-      font-weight:700;
-      font-size:1rem;
-      margin-bottom:6px;
-      letter-spacing:-.01em;
+    .caption {
+      font-size: 0.95rem;
+      color: var(--muted);
     }
 
-    .applied-desc{
-      font-size:.94rem;
-      color:var(--muted);
+    .list {
+      display: grid;
+      gap: 18px;
     }
 
-    @media(max-width:980px){
+    .item {
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .item:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .item-title {
+      font-weight: 700;
+      font-size: 1.06rem;
+      letter-spacing: -0.01em;
+    }
+
+    .item-meta {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .applied-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .applied-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 14px;
+    }
+
+    .applied-card img {
+      width: 100%;
+      display: block;
+      margin-bottom: 10px;
+      background: #ecece7;
+    }
+
+    .applied-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .applied-desc {
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 28px 0 50px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 980px) {
       .hero,
       .research-grid,
-      .applied-grid{
-        grid-template-columns:1fr;
+      .applied-grid,
+      .hero-meta {
+        grid-template-columns: 1fr;
       }
 
-      .title{
-        font-size:3.4rem;
-        max-width:none;
+      .title {
+        font-size: 3.6rem;
+        max-width: none;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        padding: 14px 0;
+      }
+
+      .nav {
+        justify-content: flex-start;
       }
     }
   </style>
 </head>
 <body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">Jeheon Woo</div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#focus">Research Focus</a>
+        <a href="#featured">Featured Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#applied">Applied Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
   <main class="wrap">
-
     <section class="hero">
-  <div>
-    <h1 class="title">
-      What makes cities better?
-    </h1>
-
-    <p class="problem">
-      And why do cities with similar conditions experience different outcomes?
-    </p>
-
-    <!-- 🔥 여기부터 추가 -->
-    <div style="margin-top:50px; max-width:700px;">
-
-      <div style="margin-bottom:30px;">
-        <div style="font-weight:700; font-size:1rem; margin-bottom:10px;">
-          Education
-        </div>
-        <div style="color:#666; font-size:0.95rem; line-height:1.6;">
-          M.L.A. in Urban Design, Seoul National University<br>
-          B.S. in Urban Engineering, Hanbat National University
-        </div>
-      </div>
-
       <div>
-        <div style="font-weight:700; font-size:1rem; margin-bottom:10px;">
-          Career
-        </div>
-        <div style="color:#666; font-size:0.95rem; line-height:1.6;">
-          Architecture & Urban Research Institute<br>
-          Korea Public Autonomy Institute
+        <h1 class="title">What makes cities better?</h1>
+        <p class="problem">And why do cities with similar conditions experience different outcomes?</p>
+
+        <div class="hero-meta">
+          <div class="meta-block">
+            <h3>Education</h3>
+            <p>
+              M.L.A. in Urban Design, Seoul National University<br>
+              B.S. in Urban Engineering, Hanbat National University
+            </p>
+          </div>
+
+          <div class="meta-block">
+            <h3>Career</h3>
+            <p>
+              Architecture & Urban Research Institute<br>
+              Korea Public Autonomy Institute
+            </p>
+          </div>
         </div>
       </div>
 
-    </div>
-    <!-- 🔥 끝 -->
+      <aside class="profile">
+        <img src="profile.jpg" alt="Portrait of Jeheon Woo">
+        <h2 class="name">Jeheon Woo</h2>
+        <div class="email">dnwpgjs98@snu.ac.kr</div>
 
-  </div>
+        <div class="downloads">
+          <a class="download-btn" href="cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+          <a class="download-btn" href="masters-thesis.pdf" target="_blank" rel="noopener noreferrer">Download Master’s Thesis</a>
+        </div>
+      </aside>
+    </section>
 
-  <aside class="profile">
-    <img src="profile.jpg">
-    <h2 class="name">Jeheon Woo</h2>
-    <div class="email">dnwpgjs98@snu.ac.kr</div>
-
-    <div class="downloads">
-      <a class="download-btn" href="cv.pdf" target="_blank">Download CV</a>
-      <a class="download-btn" href="masters-thesis.pdf" target="_blank">Download Master’s Thesis</a>
-    </div>
-  </aside>
-</section>
-
-    <section class="section">
+    <section class="section" id="about">
       <h2>About</h2>
       <p class="text">
         I study how cities are selected within urban networks and why similar spatial conditions produce different urban outcomes. Rather than treating cities as isolated units, I approach them as relational systems shaped by flows of people, infrastructure, events, and institutional decisions.
@@ -312,7 +389,7 @@
       </p>
     </section>
 
-    <section class="section">
+    <section class="section" id="focus">
       <h2>Research Focus</h2>
       <p class="text">
         Urban networks · Spatial inequality · Population mobility · Event-based mobility · Data-driven urban analysis
@@ -331,15 +408,17 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="featured">
       <h2>Featured Research</h2>
-      <div class="featured-box">
-        <div class="featured-title">A Study on the Model of Community Coexistence through Sports Events: Focusing on the Jangsu Trail Race</div>
-        <div class="featured-meta">Master’s Thesis, Seoul National University, 2025</div>
-        <p class="text">
-          This thesis examines how a sports event can function not merely as a temporary attraction, but as a locally embedded mechanism for relational population formation, resource activation, and community coexistence. Using the Jangsu Trail Race as a case, the study analyzes how event participants encounter local resources, how peripheral regions become temporarily connected to broader mobility networks, and how an event portfolio model can support long-term local sustainability.
-        </p>
+
+      <div class="featured-title">
+        A Study on the Model of Community Coexistence through Sports Events: Focusing on the Jangsu Trail Race
       </div>
+      <div class="featured-meta">Master’s Thesis, Seoul National University, 2025</div>
+
+      <p class="text">
+        This thesis examines how a sports event can function not merely as a temporary attraction, but as a locally embedded mechanism for relational population formation, resource activation, and community coexistence. Using the Jangsu Trail Race as a case, the study analyzes how event participants encounter local resources, how peripheral regions become temporarily connected to broader mobility networks, and how an event portfolio model can support long-term local sustainability.
+      </p>
 
       <div class="research-grid">
         <figure class="figure-card">
@@ -358,7 +437,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="projects">
       <h2>Selected Projects</h2>
       <div class="list">
         <div class="item">
@@ -376,25 +455,7 @@
       </div>
     </section>
 
-    <section class="section">
-      <h2>Selected Work</h2>
-      <div class="list">
-        <div class="item">
-          <div class="item-title">Master’s Thesis (2025)</div>
-          <div class="item-meta">Community Coexistence through Sports Events</div>
-        </div>
-        <div class="item">
-          <div class="item-title">ICSCGE 2026</div>
-          <div class="item-meta">From Pilot to Practice: Institutional Barriers to Integrating Smart Building Innovations into Urban Systems</div>
-        </div>
-        <div class="item">
-          <div class="item-title">IAPS 2026 Conference</div>
-          <div class="item-meta">When Green Innovations Succeed but Environments Do Not</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
+    <section class="section" id="applied">
       <h2>Applied Spatial Analysis</h2>
       <p class="text">
         Selected examples of applied spatial analysis work using accessibility ranges, land-use constraints, and grid-based demand interpretation.
@@ -427,21 +488,14 @@
       </div>
     </section>
 
-    <section class="section">
-      <h2>CV Snapshot</h2>
-      <p class="text">
-        M.L.A. in Urban Design, Seoul National University · B.S. in Urban Engineering, Hanbat National University
-      </p>
-      <p class="text">
-        Architecture & Urban Research Institute · Korea Public Autonomy Institute · GIS · Python · SPSS
-      </p>
-    </section>
-
-    <section class="section">
+    <section class="section" id="contact">
       <h2>Contact</h2>
       <p class="text">dnwpgjs98@snu.ac.kr</p>
     </section>
 
+    <footer>
+      <div>© Jeheon Woo</div>
+    </footer>
   </main>
 </body>
 </html>
