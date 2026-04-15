@@ -15,6 +15,8 @@
       --text: #111111;
       --muted: #666666;
       --line: #d8d8d1;
+      --accent: #16b4e8;
+      --accent-text: #ffffff;
       --max: 1180px;
       --nav-h: 72px;
     }
@@ -54,7 +56,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(243, 243, 239, 0.92);
+      background: rgba(243, 243, 239, 0.94);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
@@ -65,6 +67,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
+      padding: 0;
     }
 
     .brand {
@@ -77,14 +80,16 @@
     .nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 18px;
+      gap: 24px;
       align-items: center;
       justify-content: flex-end;
     }
 
     .nav a {
-      font-size: 0.95rem;
-      color: var(--muted);
+      font-size: 0.98rem;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
     }
 
     .hero {
@@ -115,22 +120,30 @@
       margin-top: 52px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px;
-      max-width: 760px;
+      gap: 36px;
+      max-width: 780px;
     }
 
     .meta-block h3 {
-      margin: 0 0 10px;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
+      margin: 0 0 12px;
+      font-size: 1.28rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
-    .meta-block p {
+    .meta-block p,
+    .meta-block a {
       margin: 0;
       color: var(--muted);
-      font-size: 0.98rem;
-      line-height: 1.65;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .meta-block .lab-link {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--text);
+      border-bottom: 1px solid var(--line);
     }
 
     .profile {
@@ -194,22 +207,38 @@
       margin: 0 0 14px;
     }
 
-    .abstract {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 24px;
+    .highlight-box {
+      background: var(--accent);
+      color: var(--accent-text);
+      padding: 28px 30px;
+      margin-top: 18px;
     }
 
-    .featured-title {
+    .highlight-box h3 {
+      margin: 0 0 14px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--accent-text);
+    }
+
+    .highlight-box p,
+    .highlight-box .featured-title,
+    .highlight-box .featured-meta {
+      color: var(--accent-text);
+    }
+
+    .highlight-box .featured-title {
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       letter-spacing: -0.01em;
       margin-bottom: 6px;
     }
 
-    .featured-meta {
-      font-size: 0.95rem;
-      color: var(--muted);
+    .highlight-box .featured-meta {
+      font-size: 0.96rem;
+      opacity: 0.9;
       margin-bottom: 12px;
     }
 
@@ -297,6 +326,40 @@
       color: var(--muted);
     }
 
+    .more-wrap {
+      margin-top: 18px;
+    }
+
+    .more-toggle {
+      display: inline-block;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-size: 0.96rem;
+      cursor: pointer;
+    }
+
+    .more-content {
+      display: none;
+      margin-top: 18px;
+    }
+
+    .more-toggle-input {
+      display: none;
+    }
+
+    .more-toggle-input:checked + label + .more-content {
+      display: block;
+    }
+
+    .more-toggle-input:checked + label::after {
+      content: " Less";
+    }
+
+    .more-toggle-input:not(:checked) + label::after {
+      content: " More";
+    }
+
     footer {
       padding: 28px 0 50px;
       color: var(--muted);
@@ -323,6 +386,7 @@
 
       .nav {
         justify-content: flex-start;
+        gap: 16px;
       }
     }
   </style>
@@ -334,8 +398,10 @@
       <nav class="nav">
         <a href="#about">About</a>
         <a href="#focus">Research Focus</a>
+        <a href="#phd">PhD Research</a>
         <a href="#featured">Featured Research</a>
         <a href="#projects">Projects</a>
+        <a href="#work">Publications</a>
         <a href="#applied">Applied Work</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -355,6 +421,9 @@
               M.L.A. in Urban Design, Seoul National University<br>
               B.S. in Urban Engineering, Hanbat National University
             </p>
+            <a class="lab-link" href="https://usdl.snu.ac.kr/" target="_blank" rel="noopener noreferrer">
+              Urban Studies and Design Lab, SNU
+            </a>
           </div>
 
           <div class="meta-block">
@@ -396,13 +465,14 @@
       </p>
     </section>
 
-    <section class="section">
-      <h2>PhD Research (Abstract)</h2>
-      <div class="abstract">
-        <p class="text">
+    <section class="section" id="phd">
+      <h2>PhD Research</h2>
+      <div class="highlight-box">
+        <h3>Research Abstract</h3>
+        <p>
           This research examines why cities with comparable accessibility and connectivity do not experience similar development outcomes within mega-regional systems. While conventional urban theory assumes that stronger connections generate shared externalities, empirical evidence shows uneven translation into growth and functional upgrading.
         </p>
-        <p class="text">
+        <p>
           The project focuses on selection mechanisms and transition failure, analyzing how certain cities convert network advantages into tangible outcomes while others do not. By integrating network analysis, commuting data, and spatial modeling, the study aims to explain how urban systems redistribute opportunities unevenly.
         </p>
       </div>
@@ -411,14 +481,16 @@
     <section class="section" id="featured">
       <h2>Featured Research</h2>
 
-      <div class="featured-title">
-        A Study on the Model of Community Coexistence through Sports Events: Focusing on the Jangsu Trail Race
+      <div class="highlight-box">
+        <h3>Featured Research</h3>
+        <div class="featured-title">
+          A Study on the Model of Community Coexistence through Sports Events: Focusing on the Jangsu Trail Race
+        </div>
+        <div class="featured-meta">Master’s Thesis, Seoul National University, 2025</div>
+        <p>
+          This thesis examines how a sports event can function not merely as a temporary attraction, but as a locally embedded mechanism for relational population formation, resource activation, and community coexistence. Using the Jangsu Trail Race as a case, the study analyzes how event participants encounter local resources, how peripheral regions become temporarily connected to broader mobility networks, and how an event portfolio model can support long-term local sustainability.
+        </p>
       </div>
-      <div class="featured-meta">Master’s Thesis, Seoul National University, 2025</div>
-
-      <p class="text">
-        This thesis examines how a sports event can function not merely as a temporary attraction, but as a locally embedded mechanism for relational population formation, resource activation, and community coexistence. Using the Jangsu Trail Race as a case, the study analyzes how event participants encounter local resources, how peripheral regions become temporarily connected to broader mobility networks, and how an event portfolio model can support long-term local sustainability.
-      </p>
 
       <div class="research-grid">
         <figure class="figure-card">
@@ -439,6 +511,7 @@
 
     <section class="section" id="projects">
       <h2>Selected Projects</h2>
+
       <div class="list">
         <div class="item">
           <div class="item-title">Smart Green Building System (National R&D)</div>
@@ -451,6 +524,75 @@
         <div class="item">
           <div class="item-title">Timber Architecture Revitalization</div>
           <div class="item-meta">Ministry of Land, Infrastructure and Transport · 2025–2026</div>
+        </div>
+      </div>
+
+      <div class="more-wrap">
+        <input class="more-toggle-input" type="checkbox" id="projects-more">
+        <label class="more-toggle" for="projects-more"></label>
+        <div class="more-content">
+          <div class="list">
+            <div class="item">
+              <div class="item-title">Development of a Master Plan for Rural Spatial Restructuring and Regeneration in Seosan City</div>
+              <div class="item-meta">Korea Public Autonomy Institute · 2025</div>
+            </div>
+            <div class="item">
+              <div class="item-title">Future City Guro 2025: Urban Development Master Plan for Guro District, Seoul</div>
+              <div class="item-meta">Seoul National University · 2024</div>
+            </div>
+            <div class="item">
+              <div class="item-title">Impact Analysis of High-Density Development in Residential Complexes and Policy Improvement Measures</div>
+              <div class="item-meta">Seoul National University · 2023</div>
+            </div>
+            <div class="item">
+              <div class="item-title">Utilizing Local Resources and Creating Relational Population in Local Cities in the Era of Population Decline</div>
+              <div class="item-meta">Seoul National University · 2023</div>
+            </div>
+            <div class="item">
+              <div class="item-title">Residential Safety Vulnerabilities and Policy Responses in Areas with High Concentrations of Single-Women Households</div>
+              <div class="item-meta">Architecture & Urban Research Institute · 2023</div>
+            </div>
+            <div class="item">
+              <div class="item-title">A Study on Tourism Resource Development Using the Daejeon Pedestrian Overpass</div>
+              <div class="item-meta">Daejeon Sejong Research Institute · 2021</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <h2>Selected Work</h2>
+
+      <div class="list">
+        <div class="item">
+          <div class="item-title">Master’s Thesis (2025)</div>
+          <div class="item-meta">Community Coexistence through Sports Events</div>
+        </div>
+        <div class="item">
+          <div class="item-title">ICSCGE 2026</div>
+          <div class="item-meta">From Pilot to Practice: Institutional Barriers to Integrating Smart Building Innovations into Urban Systems</div>
+        </div>
+        <div class="item">
+          <div class="item-title">IAPS 2026 Conference</div>
+          <div class="item-meta">When Green Innovations Succeed but Environments Do Not</div>
+        </div>
+      </div>
+
+      <div class="more-wrap">
+        <input class="more-toggle-input" type="checkbox" id="work-more">
+        <label class="more-toggle" for="work-more"></label>
+        <div class="more-content">
+          <div class="list">
+            <div class="item">
+              <div class="item-title">KAGIS 2024</div>
+              <div class="item-meta">Analysis of Distribution Patterns of Shared Kitchens, Shared Storages, and Study Cafes</div>
+            </div>
+            <div class="item">
+              <div class="item-title">UDIK 2022</div>
+              <div class="item-meta">A Study on the Regeneration of Historical and Cultural Resources and Neighborhood Environments in the Original Downtown of Daejeon</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
