@@ -15,7 +15,7 @@
       --text: #111111;
       --muted: #666666;
       --line: #d8d8d1;
-      --accent: #16b4e8;
+      --accent: #3d6dcc;
       --accent-text: #ffffff;
       --max: 1180px;
       --nav-h: 72px;
@@ -106,7 +106,20 @@
       line-height: 0.93;
       letter-spacing: -0.065em;
       margin: 0 0 24px;
-      max-width: 760px;
+      max-width: 820px;
+    }
+
+    .title-line {
+      display: block;
+    }
+
+    .title-highlight {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--accent-text);
+      padding: 0.04em 0.16em 0.08em;
+      line-height: 0.88;
+      vertical-align: baseline;
     }
 
     .problem {
@@ -141,7 +154,7 @@
 
     .meta-block .lab-link {
       display: inline-block;
-      margin-top: 8px;
+      margin-top: 6px;
       color: var(--text);
       border-bottom: 1px solid var(--line);
     }
@@ -411,26 +424,29 @@
   <main class="wrap">
     <section class="hero">
       <div>
-        <h1 class="title">What makes cities better?</h1>
+        <h1 class="title">
+          <span class="title-line">What <span class="title-highlight">makes</span></span>
+          <span class="title-line"><span class="title-highlight">cities</span> better?</span>
+        </h1>
         <p class="problem">And why do cities with similar conditions experience different outcomes?</p>
 
         <div class="hero-meta">
           <div class="meta-block">
             <h3>Education</h3>
             <p>
-              M.L.A. in Urban Design, Seoul National University<br>
-              B.S. in Urban Engineering, Hanbat National University
+              2023–2025 &nbsp; M.L.A. in Urban Design, Seoul National University<br>
+              <a class="lab-link" href="https://usdl.snu.ac.kr/" target="_blank" rel="noopener noreferrer">
+                Urban Studies and Design Lab, SNU
+              </a><br><br>
+              2017–2023 &nbsp; B.S. in Urban Engineering, Hanbat National University
             </p>
-            <a class="lab-link" href="https://usdl.snu.ac.kr/" target="_blank" rel="noopener noreferrer">
-              Urban Studies and Design Lab, SNU
-            </a>
           </div>
 
           <div class="meta-block">
             <h3>Career</h3>
             <p>
-              Architecture & Urban Research Institute<br>
-              Korea Public Autonomy Institute
+              2025–2026 &nbsp; Architecture & Urban Research Institute<br>
+              2025 &nbsp; Korea Public Autonomy Institute
             </p>
           </div>
         </div>
