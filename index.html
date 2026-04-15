@@ -1,257 +1,414 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jeheon Woo</title>
-<style>
-:root{
---bg:#f3f3ef;
---paper:#fbfbf8;
---text:#111111;
---muted:#666666;
---line:#d8d8d1;
---accent:#1b1f23;
---max:1160px;
-}
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-margin:0;
-background:var(--bg);
-color:var(--text);
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-line-height:1.72;
-}
-a{color:inherit;text-decoration:none;}
-a:hover{opacity:.72;}
-.wrap{width:min(100% - 40px,var(--max));margin:0 auto;}
-.hero{
-padding:78px 0 44px;
-display:grid;
-grid-template-columns:1.6fr .92fr;
-gap:42px;
-align-items:start;
-}
-.title{
-font-size:clamp(3.9rem,7.6vw,6.9rem);
-font-weight:800;
-line-height:.93;
-letter-spacing:-.06em;
-margin:0 0 28px;
-max-width:720px;
-}
-.problem{
-font-size:1.34rem;
-color:var(--muted);
-max-width:720px;
-margin:0;
-}
-.profile{
-border:1px solid var(--line);
-background:var(--paper);
-padding:24px;
-}
-.profile img{
-width:100%;
-aspect-ratio:4/5;
-object-fit:cover;
-display:block;
-margin-bottom:18px;
-}
-.name{
-font-size:2.75rem;
-font-weight:800;
-letter-spacing:-.045em;
-line-height:.95;
-margin:0 0 8px;
-}
-.email{
-font-size:1rem;
-color:var(--muted);
-margin-bottom:18px;
-}
-.downloads{
-display:grid;
-gap:10px;
-}
-.download-btn{
-display:block;
-padding:11px 14px;
-border:1px solid var(--line);
-background:#fff;
-font-size:.98rem;
-}
-.section{
-padding:36px 0;
-border-top:1px solid var(--line);
-}
-.section h2{
-font-size:1.58rem;
-line-height:1.1;
-letter-spacing:-.03em;
-margin:0 0 18px;
-}
-.text{
-max-width:860px;
-font-size:1.05rem;
-margin:0 0 14px;
-}
-.abstract{
-background:var(--paper);
-border:1px solid var(--line);
-padding:24px;
-}
-.research-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-margin-top:20px;
-}
-.figure-card{
-background:var(--paper);
-border:1px solid var(--line);
-padding:14px;
-}
-.figure-card img{
-width:100%;
-display:block;
-background:#ecece7;
-margin-bottom:10px;
-}
-.caption{
-font-size:.95rem;
-color:var(--muted);
-}
-.list{display:grid;gap:18px;}
-.item{padding-bottom:18px;border-bottom:1px solid var(--line);}
-.item:last-child{padding-bottom:0;border-bottom:none;}
-.item-title{font-weight:700;font-size:1.06rem;letter-spacing:-.01em;}
-.item-meta{font-size:.95rem;color:var(--muted);margin-top:4px;}
-.small-note{font-size:.94rem;color:var(--muted);margin-top:12px;}
-@media(max-width:920px){
-.hero,.research-grid{grid-template-columns:1fr;}
-.title{font-size:3.4rem;max-width:none;}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeheon Woo</title>
+  <meta
+    name="description"
+    content="Jeheon Woo | Urban researcher working on urban networks, uneven development, mobility, and spatial analysis."
+  />
+  <style>
+    :root{
+      --bg:#f3f3ef;
+      --paper:#fbfbf8;
+      --text:#111111;
+      --muted:#666666;
+      --line:#d8d8d1;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      line-height:1.72;
+      letter-spacing:0.01em;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    a:hover{
+      opacity:.72;
+    }
+
+    .wrap{
+      width:min(100% - 40px,var(--max));
+      margin:0 auto;
+    }
+
+    .hero{
+      padding:78px 0 44px;
+      display:grid;
+      grid-template-columns:1.6fr .92fr;
+      gap:42px;
+      align-items:start;
+    }
+
+    .title{
+      font-size:clamp(3.9rem,7.6vw,6.9rem);
+      font-weight:800;
+      line-height:.93;
+      letter-spacing:-.06em;
+      margin:0 0 28px;
+      max-width:760px;
+    }
+
+    .problem{
+      font-size:1.34rem;
+      color:var(--muted);
+      max-width:720px;
+      margin:0;
+    }
+
+    .profile{
+      border:1px solid var(--line);
+      background:var(--paper);
+      padding:24px;
+    }
+
+    .profile img{
+      width:100%;
+      aspect-ratio:4/5;
+      object-fit:cover;
+      display:block;
+      margin-bottom:18px;
+      background:#ecece7;
+    }
+
+    .name{
+      font-size:2.8rem;
+      font-weight:800;
+      letter-spacing:-.045em;
+      line-height:.95;
+      margin:0 0 8px;
+    }
+
+    .email{
+      font-size:1rem;
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+
+    .downloads{
+      display:grid;
+      gap:10px;
+    }
+
+    .download-btn{
+      display:block;
+      padding:11px 14px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-size:.98rem;
+    }
+
+    .section{
+      padding:36px 0;
+      border-top:1px solid var(--line);
+    }
+
+    .section h2{
+      font-size:1.6rem;
+      line-height:1.08;
+      letter-spacing:-.03em;
+      margin:0 0 18px;
+    }
+
+    .text{
+      max-width:880px;
+      font-size:1.05rem;
+      margin:0 0 14px;
+    }
+
+    .abstract{
+      background:var(--paper);
+      border:1px solid var(--line);
+      padding:24px;
+    }
+
+    .featured-box{
+      margin-top:8px;
+    }
+
+    .featured-title{
+      font-weight:700;
+      font-size:1.08rem;
+      letter-spacing:-.01em;
+      margin-bottom:6px;
+    }
+
+    .featured-meta{
+      font-size:.95rem;
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+
+    .research-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:22px;
+    }
+
+    .figure-card{
+      background:var(--paper);
+      border:1px solid var(--line);
+      padding:14px;
+    }
+
+    .figure-card img{
+      width:100%;
+      display:block;
+      background:#ecece7;
+      margin-bottom:10px;
+    }
+
+    .caption{
+      font-size:.95rem;
+      color:var(--muted);
+    }
+
+    .list{
+      display:grid;
+      gap:18px;
+    }
+
+    .item{
+      padding-bottom:18px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .item:last-child{
+      padding-bottom:0;
+      border-bottom:none;
+    }
+
+    .item-title{
+      font-weight:700;
+      font-size:1.06rem;
+      letter-spacing:-.01em;
+    }
+
+    .item-meta{
+      font-size:.95rem;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    .applied-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .applied-card{
+      background:var(--paper);
+      border:1px solid var(--line);
+      padding:14px;
+    }
+
+    .applied-card img{
+      width:100%;
+      display:block;
+      margin-bottom:10px;
+      background:#ecece7;
+    }
+
+    .applied-title{
+      font-weight:700;
+      font-size:1rem;
+      margin-bottom:6px;
+      letter-spacing:-.01em;
+    }
+
+    .applied-desc{
+      font-size:.94rem;
+      color:var(--muted);
+    }
+
+    @media(max-width:980px){
+      .hero,
+      .research-grid,
+      .applied-grid{
+        grid-template-columns:1fr;
+      }
+
+      .title{
+        font-size:3.4rem;
+        max-width:none;
+      }
+    }
+  </style>
 </head>
 <body>
-<main class="wrap">
+  <main class="wrap">
 
-<section class="hero">
-  <div>
-    <h1 class="title">Urban networks,<br>uneven outcomes.</h1>
-    <p class="problem">Why do cities with similar conditions experience different outcomes?</p>
-  </div>
+    <section class="hero">
+      <div>
+        <h1 class="title">Urban networks,<br>uneven outcomes.</h1>
+        <p class="problem">Why do cities with similar conditions experience different outcomes?</p>
+      </div>
 
-  <aside class="profile">
-    <img src="profile.jpg" alt="Jeheon Woo portrait">
-    <h2 class="name">Jeheon Woo</h2>
-    <div class="email">dnwpgjs98@snu.ac.kr</div>
-    <div class="downloads">
-      <a class="download-btn" href="cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
-      <a class="download-btn" href="masters-thesis.pdf" target="_blank" rel="noopener noreferrer">Download Master’s Thesis</a>
-    </div>
-  </aside>
-</section>
+      <aside class="profile">
+        <img src="profile.jpg" alt="Portrait of Jeheon Woo">
+        <h2 class="name">Jeheon Woo</h2>
+        <div class="email">dnwpgjs98@snu.ac.kr</div>
+        <div class="downloads">
+          <a class="download-btn" href="cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+          <a class="download-btn" href="masters-thesis.pdf" target="_blank" rel="noopener noreferrer">Download Master’s Thesis</a>
+        </div>
+      </aside>
+    </section>
 
-<section class="section">
-  <h2>About</h2>
-  <p class="text">I study how cities are selected within urban networks and why similar spatial conditions produce different urban outcomes. Rather than treating cities as isolated units, I approach them as relational systems shaped by flows of people, infrastructure, events, and institutional decisions.</p>
-  <p class="text">My work focuses on the mechanisms through which accessibility, connectivity, and policy frameworks are unevenly translated into growth, decline, or stagnation. Methodologically, I combine spatial analysis, mobility data, and empirical case studies to explain how urban advantages are selectively realized across cities.</p>
-</section>
+    <section class="section">
+      <h2>About</h2>
+      <p class="text">
+        I study how cities are selected within urban networks and why similar spatial conditions produce different urban outcomes. Rather than treating cities as isolated units, I approach them as relational systems shaped by flows of people, infrastructure, events, and institutional decisions.
+      </p>
+      <p class="text">
+        My work focuses on the mechanisms through which accessibility, connectivity, and policy frameworks are unevenly translated into growth, decline, or stagnation. Methodologically, I combine spatial analysis, mobility data, and empirical case studies to explain how urban advantages are selectively realized across cities.
+      </p>
+    </section>
 
-<section class="section">
-  <h2>Research Focus</h2>
-  <p class="text">Urban networks · Spatial inequality · Population mobility · Event-based mobility · Data-driven urban analysis</p>
-</section>
+    <section class="section">
+      <h2>Research Focus</h2>
+      <p class="text">
+        Urban networks · Spatial inequality · Population mobility · Event-based mobility · Data-driven urban analysis
+      </p>
+    </section>
 
-<section class="section">
-  <h2>PhD Research (Abstract)</h2>
-  <div class="abstract">
-    <p class="text">This research examines why cities with comparable accessibility and connectivity do not experience similar development outcomes within mega-regional systems. While conventional urban theory assumes that stronger connections generate shared externalities, empirical evidence shows uneven translation into growth and functional upgrading.</p>
-    <p class="text">The project focuses on selection mechanisms and transition failure, analyzing how certain cities convert network advantages into tangible outcomes while others do not. By integrating network analysis, commuting data, and spatial modeling, the study aims to explain how urban systems redistribute opportunities unevenly.</p>
-  </div>
-</section>
+    <section class="section">
+      <h2>PhD Research (Abstract)</h2>
+      <div class="abstract">
+        <p class="text">
+          This research examines why cities with comparable accessibility and connectivity do not experience similar development outcomes within mega-regional systems. While conventional urban theory assumes that stronger connections generate shared externalities, empirical evidence shows uneven translation into growth and functional upgrading.
+        </p>
+        <p class="text">
+          The project focuses on selection mechanisms and transition failure, analyzing how certain cities convert network advantages into tangible outcomes while others do not. By integrating network analysis, commuting data, and spatial modeling, the study aims to explain how urban systems redistribute opportunities unevenly.
+        </p>
+      </div>
+    </section>
 
-<section class="section">
-  <h2>Featured Research</h2>
-  <div class="item" style="padding-bottom:22px; border-bottom:none;">
-    <div class="item-title">A Study on the Model of Community Coexistence through Sports Events: Focusing on the Jangsu Trail Race</div>
-    <div class="item-meta">Master’s Thesis, Seoul National University, 2025</div>
-    <p class="text" style="margin-top:12px;">This thesis examines how a sports event can function not merely as a temporary attraction, but as a locally embedded mechanism for relational population formation, resource activation, and community coexistence. Using the Jangsu Trail Race as a case, the study analyzes how event participants encounter local resources, how peripheral regions become temporarily connected to broader mobility networks, and how an event portfolio model can support long-term local sustainability.</p>
-  </div>
-  <div class="research-grid">
-    <figure class="figure-card">
-      <img src="fig1.png" alt="Participant origins and national visitor distribution related to the Jangsu Trail Race">
-      <figcaption class="caption">Participant origins across South Korea show that even a peripheral mountain county can attract visitors from multiple metropolitan regions, revealing the event’s capacity to generate long-distance relational ties.</figcaption>
-    </figure>
-    <figure class="figure-card">
-      <img src="fig2.png" alt="Topography and trail course of the Jangsu Trail Race">
-      <figcaption class="caption">The event is closely embedded in Jangsu’s mountainous terrain. The course map illustrates how local topography itself becomes an active spatial resource rather than a fixed regional constraint.</figcaption>
-    </figure>
-  </div>
-</section>
+    <section class="section">
+      <h2>Featured Research</h2>
+      <div class="featured-box">
+        <div class="featured-title">A Study on the Model of Community Coexistence through Sports Events: Focusing on the Jangsu Trail Race</div>
+        <div class="featured-meta">Master’s Thesis, Seoul National University, 2025</div>
+        <p class="text">
+          This thesis examines how a sports event can function not merely as a temporary attraction, but as a locally embedded mechanism for relational population formation, resource activation, and community coexistence. Using the Jangsu Trail Race as a case, the study analyzes how event participants encounter local resources, how peripheral regions become temporarily connected to broader mobility networks, and how an event portfolio model can support long-term local sustainability.
+        </p>
+      </div>
 
-<section class="section">
-  <h2>Selected Projects</h2>
-  <div class="list">
-    <div class="item">
-      <div class="item-title">Smart Green Building System (National R&D)</div>
-      <div class="item-meta">Architecture & Urban Research Institute · 2026</div>
-    </div>
-    <div class="item">
-      <div class="item-title">Safety District Project Model</div>
-      <div class="item-meta">Ministry of the Interior and Safety · 2026</div>
-    </div>
-    <div class="item">
-      <div class="item-title">Timber Architecture Revitalization</div>
-      <div class="item-meta">Ministry of Land, Infrastructure and Transport · 2025–2026</div>
-    </div>
-  </div>
-</section>
+      <div class="research-grid">
+        <figure class="figure-card">
+          <img src="fig1.png" alt="Participant origins and visitor distribution related to the Jangsu Trail Race">
+          <figcaption class="caption">
+            Participant origins across South Korea show that even a peripheral county can attract visitors from multiple metropolitan regions.
+          </figcaption>
+        </figure>
 
-<section class="section">
-  <h2>Selected Work</h2>
-  <div class="list">
-    <div class="item">
-      <div class="item-title">Master’s Thesis (2025)</div>
-      <div class="item-meta">Community Coexistence through Sports Events</div>
-    </div>
-    <div class="item">
-      <div class="item-title">ICSCGE 2026</div>
-      <div class="item-meta">From Pilot to Practice: Institutional Barriers to Integrating Smart Building Innovations into Urban Systems</div>
-    </div>
-    <div class="item">
-      <div class="item-title">IAPS 2026 Conference</div>
-      <div class="item-meta">When Green Innovations Succeed but Environments Do Not</div>
-    </div>
-  </div>
-</section>
+        <figure class="figure-card">
+          <img src="fig2.png" alt="Topography and trail course of the Jangsu Trail Race">
+          <figcaption class="caption">
+            The trail course demonstrates how mountainous terrain itself becomes an active local resource rather than a regional constraint.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
 
-<section class="section">
-  <h2>Applied Spatial Analysis</h2>
-  <div class="list">
-    <div class="item">
-      <div class="item-title">Location-based Accessibility and Demand Visualization</div>
-      <div class="item-meta">Selected client-commissioned spatial analysis work</div>
-      <p class="text">This section may be included only if the work is presented as applied spatial analysis rather than freelance output. Curate no more than two or three examples, anonymize them when needed, and show them as evidence of methodological capability.</p>
-      <p class="small-note">Suggested file links: <a href="jamsil.html" target="_blank" rel="noopener noreferrer">Jamsil</a> · <a href="sangam.html" target="_blank" rel="noopener noreferrer">Sangam</a> · <a href="gocheok.html" target="_blank" rel="noopener noreferrer">Gocheok</a></p>
-    </div>
-  </div>
-</section>
+    <section class="section">
+      <h2>Selected Projects</h2>
+      <div class="list">
+        <div class="item">
+          <div class="item-title">Smart Green Building System (National R&D)</div>
+          <div class="item-meta">Architecture & Urban Research Institute · 2026</div>
+        </div>
+        <div class="item">
+          <div class="item-title">Safety District Project Model</div>
+          <div class="item-meta">Ministry of the Interior and Safety · 2026</div>
+        </div>
+        <div class="item">
+          <div class="item-title">Timber Architecture Revitalization</div>
+          <div class="item-meta">Ministry of Land, Infrastructure and Transport · 2025–2026</div>
+        </div>
+      </div>
+    </section>
 
-<section class="section">
-  <h2>CV Snapshot</h2>
-  <p class="text">M.L.A. in Urban Design, Seoul National University · B.S. in Urban Engineering, Hanbat National University</p>
-  <p class="text">Architecture & Urban Research Institute · Korea Public Autonomy Institute · GIS · Python · SPSS</p>
-</section>
+    <section class="section">
+      <h2>Selected Work</h2>
+      <div class="list">
+        <div class="item">
+          <div class="item-title">Master’s Thesis (2025)</div>
+          <div class="item-meta">Community Coexistence through Sports Events</div>
+        </div>
+        <div class="item">
+          <div class="item-title">ICSCGE 2026</div>
+          <div class="item-meta">From Pilot to Practice: Institutional Barriers to Integrating Smart Building Innovations into Urban Systems</div>
+        </div>
+        <div class="item">
+          <div class="item-title">IAPS 2026 Conference</div>
+          <div class="item-meta">When Green Innovations Succeed but Environments Do Not</div>
+        </div>
+      </div>
+    </section>
 
-<section class="section">
-  <h2>Contact</h2>
-  <p class="text">dnwpgjs98@snu.ac.kr</p>
-</section>
+    <section class="section">
+      <h2>Applied Spatial Analysis</h2>
+      <p class="text">
+        Selected examples of applied spatial analysis work using accessibility ranges, land-use constraints, and grid-based demand interpretation.
+      </p>
 
-</main>
+      <div class="applied-grid">
+        <div class="applied-card">
+          <img src="jamsil.png" alt="Applied spatial analysis around Jamsil">
+          <div class="applied-title">Jamsil</div>
+          <div class="applied-desc">
+            Accessibility and land-use filtering around Jamsil reveal how service reach interacts with residential and commercial patterns.
+          </div>
+        </div>
+
+        <div class="applied-card">
+          <img src="sangam.png" alt="Applied spatial analysis around Sangam">
+          <div class="applied-title">Sangam</div>
+          <div class="applied-desc">
+            The Sangam case shows a different spatial structure where reachable demand is shaped by large-scale facilities and fragmented urban form.
+          </div>
+        </div>
+
+        <div class="applied-card">
+          <img src="gocheok.png" alt="Applied spatial analysis around Gocheok">
+          <div class="applied-title">Gocheok</div>
+          <div class="applied-desc">
+            In Gocheok, grid-based interpretation highlights how catchment areas shift under distinct land-use restrictions and neighborhood morphology.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>CV Snapshot</h2>
+      <p class="text">
+        M.L.A. in Urban Design, Seoul National University · B.S. in Urban Engineering, Hanbat National University
+      </p>
+      <p class="text">
+        Architecture & Urban Research Institute · Korea Public Autonomy Institute · GIS · Python · SPSS
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Contact</h2>
+      <p class="text">dnwpgjs98@snu.ac.kr</p>
+    </section>
+
+  </main>
 </body>
 </html>
