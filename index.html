@@ -149,9 +149,9 @@
       align-items: flex-start;
       justify-content: center;
       overflow: hidden;
-      background: transparent;
-      border: none;
-      box-shadow: none;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
     }
 
     .meta-logo img {
@@ -159,9 +159,10 @@
       height: 100%;
       object-fit: contain;
       display: block;
-      background: transparent;
-      border: none;
-      box-shadow: none;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      mix-blend-mode: multiply;
     }
 
     .meta-logo.empty {
@@ -348,6 +349,10 @@
       margin-top: 20px;
     }
 
+    .more-wrap.centered {
+      text-align: center;
+    }
+
     .more-toggle {
       display: inline-block;
       padding: 10px 14px;
@@ -360,6 +365,7 @@
     .more-content {
       display: none;
       margin-top: 20px;
+      text-align: left;
     }
 
     .more-toggle-input {
@@ -571,7 +577,7 @@
 
             <div class="meta-entry">
               <div class="meta-logo">
-                <img src="auri.png" alt="Architecture & Urban Research Institute logo">
+                <img src="auri_ci_11.png" alt="Architecture & Urban Research Institute logo">
               </div>
               <div class="meta-text">
                 <p class="meta-line-1">2025–2026 &nbsp; Architecture & Urban Research Institute (AURI)</p>
@@ -582,6 +588,15 @@
               <div class="meta-logo empty"></div>
               <div class="meta-text">
                 <p class="meta-line-1">2025 &nbsp; Korea Public Autonomy Institute</p>
+              </div>
+            </div>
+
+            <div class="meta-entry">
+              <div class="meta-logo">
+                <img src="dsri-removebg-preview.png" alt="Daejeon Sejong Research Institute logo">
+              </div>
+              <div class="meta-text">
+                <p class="meta-line-1">2022 &nbsp; Daejeon Sejong Research Institute</p>
               </div>
             </div>
           </div>
@@ -616,14 +631,14 @@
       </p>
 
       <div class="focus-inline">
-        <div class="focus-tag">Urban networks</div>
-        <div class="focus-tag">Spatial inequality</div>
-        <div class="focus-tag">Population mobility</div>
-        <div class="focus-tag">Event-based mobility</div>
-        <div class="focus-tag">Data-driven urban analysis</div>
+        <div class="focus-tag">Urban·Lifestyle Studies</div>
+        <div class="focus-tag">Regional Science</div>
+        <div class="focus-tag">Spatial Analysis</div>
+        <div class="focus-tag">Tourism Geography</div>
+        <div class="focus-tag">Urban Policy</div>
       </div>
 
-      <div class="more-wrap">
+      <div class="more-wrap centered">
         <input class="more-toggle-input" type="checkbox" id="about-more">
         <label class="more-toggle" for="about-more"></label>
         <div class="more-content">
