@@ -6,7 +6,7 @@
   <title>Jeheon Woo</title>
   <meta
     name="description"
-    content="Jeheon Woo | Urban researcher working on urban networks, uneven development, mobility, and spatial analysis."
+    content="Jeheon Woo | PhD student in Urban Planning working on urban networks, uneven development, mobility, and spatial analysis."
   />
   <style>
     :root {
@@ -21,13 +21,8 @@
       --nav-h: 72px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -44,7 +39,7 @@
     }
 
     a:hover {
-      opacity: 0.72;
+      opacity: 0.75;
     }
 
     .wrap {
@@ -67,7 +62,6 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      padding: 0;
     }
 
     .brand {
@@ -86,7 +80,7 @@
     }
 
     .nav a {
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       color: var(--text);
       text-transform: uppercase;
       letter-spacing: -0.01em;
@@ -105,8 +99,8 @@
       font-weight: 800;
       line-height: 0.93;
       letter-spacing: -0.065em;
-      margin: 0 0 24px;
-      max-width: 820px;
+      margin: 0;
+      max-width: 840px;
     }
 
     .title-line {
@@ -122,34 +116,27 @@
       vertical-align: baseline;
     }
 
-    .problem {
-      font-size: 1.28rem;
-      color: var(--muted);
-      margin: 0;
-      max-width: 760px;
-    }
-
     .hero-meta {
-      margin-top: 56px;
+      margin-top: 58px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 40px;
-      max-width: 820px;
+      gap: 42px;
+      max-width: 860px;
     }
 
     .meta-block h3 {
-      margin: 0 0 16px;
-      font-size: 1.28rem;
+      margin: 0 0 18px;
+      font-size: 1.3rem;
       font-weight: 800;
       letter-spacing: -0.02em;
     }
 
     .meta-entry {
       display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 16px;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
       align-items: start;
-      margin-bottom: 22px;
+      margin-bottom: 28px;
     }
 
     .meta-entry:last-child {
@@ -157,15 +144,13 @@
     }
 
     .meta-logo {
-      width: 64px;
-      height: 64px;
-      border: 1px solid var(--line);
-      background: #fff;
+      width: 72px;
+      height: 72px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      padding: 6px;
       overflow: hidden;
+      background: transparent;
     }
 
     .meta-logo img {
@@ -173,33 +158,39 @@
       height: 100%;
       object-fit: contain;
       display: block;
+      background: transparent;
     }
 
     .meta-logo.empty {
-      border: none;
-      background: transparent;
-      padding: 0;
+      visibility: hidden;
     }
 
     .meta-text {
       min-width: 0;
     }
 
-    .meta-main {
+    .meta-line-1 {
       margin: 0;
       color: var(--muted);
       font-size: 1.05rem;
-      line-height: 1.75;
-    }
-
-    .meta-sub {
-      margin: 6px 0 0;
-      color: var(--text);
-      font-size: 0.98rem;
       line-height: 1.6;
     }
 
-    .meta-sub a {
+    .meta-line-2 {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .meta-line-3 {
+      margin: 8px 0 0;
+      color: var(--text);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .meta-line-3 a {
       border-bottom: 1px solid var(--line);
     }
 
@@ -223,13 +214,20 @@
       font-weight: 800;
       letter-spacing: -0.05em;
       line-height: 0.95;
-      margin: 0 0 8px;
+      margin: 0 0 10px;
     }
 
-    .email {
-      font-size: 1rem;
-      color: var(--muted);
+    .profile-info {
+      display: grid;
+      gap: 6px;
       margin-bottom: 18px;
+    }
+
+    .profile-info div,
+    .profile-info a {
+      font-size: 0.98rem;
+      color: var(--muted);
+      line-height: 1.5;
     }
 
     .downloads {
@@ -259,9 +257,24 @@
     }
 
     .text {
-      max-width: 880px;
+      max-width: 900px;
       font-size: 1.05rem;
       margin: 0 0 16px;
+    }
+
+    .focus-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .focus-tag {
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 8px 12px;
+      font-size: 0.94rem;
+      color: var(--text);
     }
 
     .highlight-box {
@@ -280,48 +293,9 @@
       color: var(--accent-text);
     }
 
-    .highlight-box p,
-    .highlight-box .featured-title,
-    .highlight-box .featured-meta {
+    .highlight-box p {
       color: var(--accent-text);
-    }
-
-    .highlight-box .featured-title {
-      font-weight: 700;
-      font-size: 1.12rem;
-      letter-spacing: -0.01em;
-      margin-bottom: 6px;
-    }
-
-    .highlight-box .featured-meta {
-      font-size: 0.96rem;
-      opacity: 0.9;
-      margin-bottom: 12px;
-    }
-
-    .research-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 26px;
-    }
-
-    .figure-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 14px;
-    }
-
-    .figure-card img {
-      width: 100%;
-      display: block;
-      background: #ecece7;
-      margin-bottom: 10px;
-    }
-
-    .caption {
-      font-size: 0.95rem;
-      color: var(--muted);
+      margin: 0 0 14px;
     }
 
     .list {
@@ -345,42 +319,19 @@
       letter-spacing: -0.01em;
     }
 
+    .item-subtitle {
+      margin-top: 8px;
+      font-size: 0.98rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
     .item-meta {
       font-size: 0.95rem;
       color: var(--muted);
-      margin-top: 4px;
-    }
-
-    .applied-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 24px;
-    }
-
-    .applied-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 14px;
-    }
-
-    .applied-card img {
-      width: 100%;
-      display: block;
-      margin-bottom: 10px;
-      background: #ecece7;
-    }
-
-    .applied-title {
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 6px;
-      letter-spacing: -0.01em;
-    }
-
-    .applied-desc {
-      font-size: 0.94rem;
-      color: var(--muted);
+      margin-top: 6px;
+      white-space: pre-line;
+      line-height: 1.6;
     }
 
     .more-wrap {
@@ -417,17 +368,72 @@
       content: " More";
     }
 
+    .research-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .figure-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 14px;
+    }
+
+    .figure-card img {
+      width: 100%;
+      display: block;
+      background: #ecece7;
+      margin-bottom: 10px;
+    }
+
+    .caption {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .contact-center {
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .contact-row {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .contact-link svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
     footer {
       padding: 34px 0 64px;
       color: var(--muted);
       font-size: 0.94rem;
+      text-align: center;
     }
 
     @media (max-width: 980px) {
       .hero,
-      .research-grid,
-      .applied-grid,
-      .hero-meta {
+      .hero-meta,
+      .research-grid {
         grid-template-columns: 1fr;
       }
 
@@ -457,6 +463,10 @@
         width: 52px;
         height: 52px;
       }
+
+      .contact-row {
+        gap: 16px;
+      }
     }
   </style>
 </head>
@@ -466,12 +476,10 @@
       <div class="brand">Jeheon Woo</div>
       <nav class="nav">
         <a href="#about">About</a>
-        <a href="#focus">Research Focus</a>
         <a href="#phd">PhD Research</a>
-        <a href="#featured">Featured Research</a>
+        <a href="#publications">Publications</a>
         <a href="#projects">Projects</a>
-        <a href="#work">Publications</a>
-        <a href="#applied">Applied Work</a>
+        <a href="#conferences">Conferences</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -484,7 +492,6 @@
           <span class="title-line">What <span class="title-highlight">makes</span></span>
           <span class="title-line"><span class="title-highlight">cities</span> better?</span>
         </h1>
-        <p class="problem">And why do cities with similar conditions experience different outcomes?</p>
 
         <div class="hero-meta">
           <div class="meta-block">
@@ -492,11 +499,12 @@
 
             <div class="meta-entry">
               <div class="meta-logo">
-                <img src="snu_ui_download.png" alt="Seoul National University logo">
+                <img src="snu.png" alt="Seoul National University logo">
               </div>
               <div class="meta-text">
-                <p class="meta-main">2023–2025 &nbsp; M.L.A. in Urban Design, Seoul National University</p>
-                <p class="meta-sub">
+                <p class="meta-line-1">2023–2025 &nbsp; M.L.A. in Urban Design</p>
+                <p class="meta-line-2">Seoul National University</p>
+                <p class="meta-line-3">
                   <a href="https://usdl.snu.ac.kr/" target="_blank" rel="noopener noreferrer">Urban Studies and Design Lab, SNU</a>
                 </p>
               </div>
@@ -504,10 +512,11 @@
 
             <div class="meta-entry">
               <div class="meta-logo">
-                <img src="UI_08(1).jpg" alt="Hanbat National University logo">
+                <img src="hanbat.jpg" alt="Hanbat National University logo">
               </div>
               <div class="meta-text">
-                <p class="meta-main">2017–2023 &nbsp; B.S. in Urban Engineering, Hanbat National University</p>
+                <p class="meta-line-1">2017–2023 &nbsp; B.S. in Urban Engineering</p>
+                <p class="meta-line-2">Hanbat National University</p>
               </div>
             </div>
           </div>
@@ -520,14 +529,14 @@
                 <img src="auri.png" alt="Architecture & Urban Research Institute logo">
               </div>
               <div class="meta-text">
-                <p class="meta-main">2025–2026 &nbsp; Architecture & Urban Research Institute</p>
+                <p class="meta-line-1">2025–2026 &nbsp; Architecture & Urban Research Institute (AURI)</p>
               </div>
             </div>
 
             <div class="meta-entry">
               <div class="meta-logo empty"></div>
               <div class="meta-text">
-                <p class="meta-main">2025 &nbsp; Korea Public Autonomy Institute</p>
+                <p class="meta-line-1">2025 &nbsp; Korea Public Autonomy Institute</p>
               </div>
             </div>
           </div>
@@ -537,7 +546,13 @@
       <aside class="profile">
         <img src="profile.jpg" alt="Portrait of Jeheon Woo">
         <h2 class="name">Jeheon Woo</h2>
-        <div class="email">dnwpgjs98@snu.ac.kr</div>
+
+        <div class="profile-info">
+          <div>PhD Student in Urban Planning, Seoul National University</div>
+          <div>Daejeon, South Korea</div>
+          <a href="https://orcid.org/0009-0003-8837-3134" target="_blank" rel="noopener noreferrer">ORCID: 0009-0003-8837-3134</a>
+          <div>Engineer Urban Planning (Certified)</div>
+        </div>
 
         <div class="downloads">
           <a class="download-btn" href="cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
@@ -554,13 +569,14 @@
       <p class="text">
         My work focuses on the mechanisms through which accessibility, connectivity, and policy frameworks are unevenly translated into growth, decline, or stagnation. Methodologically, I combine spatial analysis, mobility data, and empirical case studies to explain how urban advantages are selectively realized across cities.
       </p>
-    </section>
 
-    <section class="section" id="focus">
-      <h2>Research Focus</h2>
-      <p class="text">
-        Urban networks · Spatial inequality · Population mobility · Event-based mobility · Data-driven urban analysis
-      </p>
+      <div class="focus-inline">
+        <div class="focus-tag">Urban networks</div>
+        <div class="focus-tag">Spatial inequality</div>
+        <div class="focus-tag">Population mobility</div>
+        <div class="focus-tag">Event-based mobility</div>
+        <div class="focus-tag">Data-driven urban analysis</div>
+      </div>
     </section>
 
     <section class="section" id="phd">
@@ -576,52 +592,63 @@
       </div>
     </section>
 
-    <section class="section" id="featured">
-      <h2>Featured Research</h2>
+    <section class="section" id="publications">
+      <h2>Publications</h2>
 
-      <div class="highlight-box">
-        <h3>Featured Research</h3>
-        <div class="featured-title">
-          A Study on the Model of Community Coexistence through Sports Events: Focusing on the Jangsu Trail Race
+      <div class="list">
+        <div class="item">
+          <div class="item-title">스포츠 이벤트를 통한 지역사회 상생 모델에 관한 연구 : 장수 트레일레이스를 중심으로</div>
+          <div class="item-subtitle">A Study on the Model of Community Coexistence through Sports Events: Focusing on the Jangsu Trail Race</div>
+          <div class="item-meta">Master’s Thesis
+Seoul National University · Seoul, South Korea · 2025</div>
         </div>
-        <div class="featured-meta">Master’s Thesis, Seoul National University, 2025</div>
-        <p>
-          This thesis examines how a sports event can function not merely as a temporary attraction, but as a locally embedded mechanism for relational population formation, resource activation, and community coexistence. Using the Jangsu Trail Race as a case, the study analyzes how event participants encounter local resources, how peripheral regions become temporarily connected to broader mobility networks, and how an event portfolio model can support long-term local sustainability.
-        </p>
       </div>
 
-      <div class="research-grid">
-        <figure class="figure-card">
-          <img src="fig1.png" alt="Participant origins and visitor distribution related to the Jangsu Trail Race">
-          <figcaption class="caption">
-            Participant origins across South Korea show that even a peripheral county can attract visitors from multiple metropolitan regions.
-          </figcaption>
-        </figure>
+      <div class="more-wrap">
+        <input class="more-toggle-input" type="checkbox" id="pub-more">
+        <label class="more-toggle" for="pub-more"></label>
+        <div class="more-content">
+          <div class="highlight-box">
+            <h3>Publication Details</h3>
+            <p>
+              This thesis examines how a sports event can function not merely as a temporary attraction, but as a locally embedded mechanism for relational population formation, resource activation, and community coexistence. Using the Jangsu Trail Race as a case, the study analyzes how event participants encounter local resources, how peripheral regions become temporarily connected to broader mobility networks, and how an event portfolio model can support long-term local sustainability.
+            </p>
+          </div>
 
-        <figure class="figure-card">
-          <img src="fig2.png" alt="Topography and trail course of the Jangsu Trail Race">
-          <figcaption class="caption">
-            The trail course demonstrates how mountainous terrain itself becomes an active local resource rather than a regional constraint.
-          </figcaption>
-        </figure>
+          <div class="research-grid">
+            <figure class="figure-card">
+              <img src="fig1.png" alt="Participant origins and visitor distribution related to the Jangsu Trail Race">
+              <figcaption class="caption">
+                Participant origins across South Korea show that even a peripheral county can attract visitors from multiple metropolitan regions.
+              </figcaption>
+            </figure>
+
+            <figure class="figure-card">
+              <img src="fig2.png" alt="Topography and trail course of the Jangsu Trail Race">
+              <figcaption class="caption">
+                The trail course demonstrates how mountainous terrain itself becomes an active local resource rather than a regional constraint.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section" id="projects">
-      <h2>Selected Projects</h2>
+      <h2>Projects</h2>
 
       <div class="list">
         <div class="item">
           <div class="item-title">Smart Green Building System (National R&D)</div>
-          <div class="item-meta">Architecture & Urban Research Institute · 2026</div>
+          <div class="item-meta">Architecture & Urban Research Institute · Sejong, South Korea · 2026</div>
         </div>
         <div class="item">
           <div class="item-title">Safety District Project Model</div>
-          <div class="item-meta">Ministry of the Interior and Safety · 2026</div>
+          <div class="item-meta">Ministry of the Interior and Safety · South Korea · 2026</div>
         </div>
         <div class="item">
           <div class="item-title">Timber Architecture Revitalization</div>
-          <div class="item-meta">Ministry of Land, Infrastructure and Transport · 2025–2026</div>
+          <div class="item-meta">Ministry of Land, Infrastructure and Transport · South Korea · 2025–2026</div>
         </div>
       </div>
 
@@ -632,105 +659,99 @@
           <div class="list">
             <div class="item">
               <div class="item-title">Development of a Master Plan for Rural Spatial Restructuring and Regeneration in Seosan City</div>
-              <div class="item-meta">Korea Public Autonomy Institute · 2025</div>
+              <div class="item-meta">Korea Public Autonomy Institute · Seoul, South Korea · 2025</div>
             </div>
             <div class="item">
               <div class="item-title">Future City Guro 2025: Urban Development Master Plan for Guro District, Seoul</div>
-              <div class="item-meta">Seoul National University · 2024</div>
+              <div class="item-meta">Seoul National University · Seoul, South Korea · 2024</div>
             </div>
             <div class="item">
               <div class="item-title">Impact Analysis of High-Density Development in Residential Complexes and Policy Improvement Measures</div>
-              <div class="item-meta">Seoul National University · 2023</div>
+              <div class="item-meta">Seoul National University · Seoul, South Korea · 2023</div>
             </div>
             <div class="item">
               <div class="item-title">Utilizing Local Resources and Creating Relational Population in Local Cities in the Era of Population Decline</div>
-              <div class="item-meta">Seoul National University · 2023</div>
+              <div class="item-meta">Seoul National University · Seoul, South Korea · 2023</div>
             </div>
             <div class="item">
               <div class="item-title">Residential Safety Vulnerabilities and Policy Responses in Areas with High Concentrations of Single-Women Households</div>
-              <div class="item-meta">Architecture & Urban Research Institute · 2023</div>
+              <div class="item-meta">Architecture & Urban Research Institute · Sejong, South Korea · 2023</div>
             </div>
             <div class="item">
               <div class="item-title">A Study on Tourism Resource Development Using the Daejeon Pedestrian Overpass</div>
-              <div class="item-meta">Daejeon Sejong Research Institute · 2021</div>
+              <div class="item-meta">Daejeon Sejong Research Institute · Daejeon, South Korea · 2021</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="work">
-      <h2>Selected Work</h2>
+    <section class="section" id="conferences">
+      <h2>Conferences</h2>
 
       <div class="list">
         <div class="item">
-          <div class="item-title">Master’s Thesis (2025)</div>
-          <div class="item-meta">Community Coexistence through Sports Events</div>
+          <div class="item-title">From Pilot to Practice: Institutional Barriers to Integrating Smart Building Innovations into Urban Systems</div>
+          <div class="item-meta">ICSCGE 2026: The 6th International Conference on Smart City and Green Energy
+Brisbane, Australia · 2026</div>
         </div>
         <div class="item">
-          <div class="item-title">ICSCGE 2026</div>
-          <div class="item-meta">From Pilot to Practice: Institutional Barriers to Integrating Smart Building Innovations into Urban Systems</div>
-        </div>
-        <div class="item">
-          <div class="item-title">IAPS 2026 Conference</div>
-          <div class="item-meta">When Green Innovations Succeed but Environments Do Not</div>
+          <div class="item-title">When Green Innovations Succeed but Environments Do Not</div>
+          <div class="item-meta">IAPS 2026 Conference · University of Surrey
+Guildford, United Kingdom · 2026</div>
         </div>
       </div>
 
       <div class="more-wrap">
-        <input class="more-toggle-input" type="checkbox" id="work-more">
-        <label class="more-toggle" for="work-more"></label>
+        <input class="more-toggle-input" type="checkbox" id="conf-more">
+        <label class="more-toggle" for="conf-more"></label>
         <div class="more-content">
           <div class="list">
             <div class="item">
-              <div class="item-title">KAGIS 2024</div>
-              <div class="item-meta">Analysis of Distribution Patterns of Shared Kitchens, Shared Storages, and Study Cafes</div>
+              <div class="item-title">Analysis of Distribution Patterns of Shared Kitchens, Shared Storages, and Study Cafes</div>
+              <div class="item-meta">The Korean Association of Geographic Information Studies (KAGIS)
+Busan, South Korea · 2024</div>
             </div>
             <div class="item">
-              <div class="item-title">UDIK 2022</div>
-              <div class="item-meta">A Study on the Regeneration of Historical and Cultural Resources and Neighborhood Environments in the Original Downtown of Daejeon</div>
+              <div class="item-title">A Study on the Regeneration of Historical and Cultural Resources and Neighborhood Environments in the Original Downtown of Daejeon</div>
+              <div class="item-meta">Urban Design Institute of Korea (UDIK)
+Online · 2022</div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="applied">
-      <h2>Applied Spatial Analysis</h2>
-      <p class="text">
-        Selected examples of applied spatial analysis work using accessibility ranges, land-use constraints, and grid-based demand interpretation.
-      </p>
-
-      <div class="applied-grid">
-        <div class="applied-card">
-          <img src="jamsil.png" alt="Applied spatial analysis around Jamsil">
-          <div class="applied-title">Jamsil</div>
-          <div class="applied-desc">
-            Accessibility and land-use filtering around Jamsil reveal how service reach interacts with residential and commercial patterns.
-          </div>
-        </div>
-
-        <div class="applied-card">
-          <img src="sangam.png" alt="Applied spatial analysis around Sangam">
-          <div class="applied-title">Sangam</div>
-          <div class="applied-desc">
-            The Sangam case shows a different spatial structure where reachable demand is shaped by large-scale facilities and fragmented urban form.
-          </div>
-        </div>
-
-        <div class="applied-card">
-          <img src="gocheok.png" alt="Applied spatial analysis around Gocheok">
-          <div class="applied-title">Gocheok</div>
-          <div class="applied-desc">
-            In Gocheok, grid-based interpretation highlights how catchment areas shift under distinct land-use restrictions and neighborhood morphology.
           </div>
         </div>
       </div>
     </section>
 
     <section class="section" id="contact">
-      <h2>Contact</h2>
-      <p class="text">dnwpgjs98@snu.ac.kr</p>
+      <div class="contact-center">
+        <h2>Contact</h2>
+        <div class="contact-row">
+          <a class="contact-link" href="mailto:dnwpgjs98@snu.ac.kr" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 6.75h18v10.5H3V6.75Zm1.53 1.5L12 13.5l7.47-5.25" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Email</span>
+          </a>
+
+          <a class="contact-link" href="https://www.linkedin.com/in/jeheon-woo-a660b3299/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7.2 8.4a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM6 18h2.4v-8.4H6V18Zm4.2 0h2.4v-4.5c0-1.2.24-2.28 1.74-2.28 1.47 0 1.5 1.14 1.5 2.37V18h2.4v-4.92c0-2.4-.51-4.2-3.3-4.2-1.35 0-2.25.75-2.61 1.44h-.03V9.6H10.2V18Z" fill="#111111"/></svg>
+            <span>LinkedIn</span>
+          </a>
+
+          <a class="contact-link" href="https://github.com/vvoojeheon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.75a8.25 8.25 0 0 0-2.61 16.08c.42.09.57-.18.57-.39v-1.53c-2.31.51-2.79-.99-2.79-.99-.36-.93-.9-1.17-.9-1.17-.75-.51.06-.51.06-.51.81.06 1.23.84 1.23.84.75 1.23 1.92.87 2.4.66.06-.51.3-.87.54-1.08-1.86-.21-3.81-.93-3.81-4.2 0-.93.33-1.71.84-2.31-.09-.21-.36-1.05.09-2.19 0 0 .69-.21 2.28.87a7.5 7.5 0 0 1 4.14 0c1.59-1.08 2.28-.87 2.28-.87.45 1.14.18 1.98.09 2.19.54.6.84 1.38.84 2.31 0 3.27-1.95 3.99-3.84 4.2.3.27.57.78.57 1.56v2.31c0 .24.15.51.57.39A8.25 8.25 0 0 0 12 3.75Z" fill="#111111"/></svg>
+            <span>GitHub</span>
+          </a>
+
+          <a class="contact-link" href="https://scholar.google.com/citations?user=5yUDCNQAAAAJ&hl=ko" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m12 4.5 8.25 4.5L12 13.5 3.75 9 12 4.5Zm-5.25 7.14V15a5.25 5.25 0 0 0 10.5 0v-3.36L12 14.55l-5.25-2.91Z" fill="#111111"/></svg>
+            <span>Google Scholar</span>
+          </a>
+
+          <a class="contact-link" href="https://orcid.org/0009-0003-8837-3134" target="_blank" rel="noopener noreferrer" aria-label="ORCID">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-3.3 4.5a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1ZM7.8 10.8h1.8v5.4H7.8v-5.4Zm4.08 0h2.13c2.01 0 3.09 1.14 3.09 2.7 0 1.41-.81 2.37-2.22 2.61l1.77 2.19H14.7l-1.59-2.07h-.18v2.07h-1.05v-5.4Zm1.05.87v1.83h.9c1.2 0 1.98-.21 1.98-.93 0-.69-.66-.9-1.89-.9h-.99Z" fill="#111111"/></svg>
+            <span>ORCID</span>
+          </a>
+        </div>
+      </div>
     </section>
 
     <footer>
