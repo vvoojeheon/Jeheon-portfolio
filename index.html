@@ -118,10 +118,9 @@
 
     .hero-meta {
       margin-top: 58px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 42px;
       max-width: 860px;
+      display: grid;
+      gap: 38px;
     }
 
     .meta-block h3 {
@@ -136,7 +135,7 @@
       grid-template-columns: 72px 1fr;
       gap: 18px;
       align-items: start;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
 
     .meta-entry:last-child {
@@ -151,6 +150,8 @@
       justify-content: center;
       overflow: hidden;
       background: transparent;
+      border: none;
+      box-shadow: none;
     }
 
     .meta-logo img {
@@ -159,6 +160,8 @@
       object-fit: contain;
       display: block;
       background: transparent;
+      border: none;
+      box-shadow: none;
     }
 
     .meta-logo.empty {
@@ -172,21 +175,21 @@
     .meta-line-1 {
       margin: 0;
       color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.6;
+      font-size: 1.08rem;
+      line-height: 1.55;
     }
 
     .meta-line-2 {
       margin: 2px 0 0;
       color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.6;
+      font-size: 1.08rem;
+      line-height: 1.55;
     }
 
     .meta-line-3 {
       margin: 8px 0 0;
       color: var(--text);
-      font-size: 0.98rem;
+      font-size: 1rem;
       line-height: 1.5;
     }
 
@@ -219,13 +222,20 @@
 
     .profile-info {
       display: grid;
-      gap: 6px;
+      gap: 8px;
       margin-bottom: 18px;
     }
 
-    .profile-info div,
+    .profile-role {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+
+    .profile-detail,
     .profile-info a {
-      font-size: 0.98rem;
+      font-size: 1rem;
       color: var(--muted);
       line-height: 1.5;
     }
@@ -393,6 +403,37 @@
       color: var(--muted);
     }
 
+    .spatial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 18px;
+    }
+
+    .spatial-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 14px;
+    }
+
+    .spatial-card img {
+      width: 100%;
+      display: block;
+      margin-bottom: 10px;
+      background: #ecece7;
+    }
+
+    .spatial-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .spatial-desc {
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
     .contact-center {
       text-align: center;
       max-width: 920px;
@@ -432,8 +473,8 @@
 
     @media (max-width: 980px) {
       .hero,
-      .hero-meta,
-      .research-grid {
+      .research-grid,
+      .spatial-grid {
         grid-template-columns: 1fr;
       }
 
@@ -450,6 +491,10 @@
       .nav {
         justify-content: flex-start;
         gap: 16px;
+      }
+
+      .profile-role {
+        white-space: normal;
       }
     }
 
@@ -548,10 +593,10 @@
         <h2 class="name">Jeheon Woo</h2>
 
         <div class="profile-info">
-          <div>PhD Student in Urban Planning, Seoul National University</div>
-          <div>Daejeon, South Korea</div>
-          <a href="https://orcid.org/0009-0003-8837-3134" target="_blank" rel="noopener noreferrer">ORCID: 0009-0003-8837-3134</a>
-          <div>Engineer Urban Planning (Certified)</div>
+          <div class="profile-role">PhD Student in Urban Planning, Seoul National University</div>
+          <div class="profile-detail">Daejeon, South Korea</div>
+          <a class="profile-detail" href="https://orcid.org/0009-0003-8837-3134" target="_blank" rel="noopener noreferrer">ORCID: 0009-0003-8837-3134</a>
+          <div class="profile-detail">Engineer Urban Planning (Certified)</div>
         </div>
 
         <div class="downloads">
@@ -576,6 +621,38 @@
         <div class="focus-tag">Population mobility</div>
         <div class="focus-tag">Event-based mobility</div>
         <div class="focus-tag">Data-driven urban analysis</div>
+      </div>
+
+      <div class="more-wrap">
+        <input class="more-toggle-input" type="checkbox" id="about-more">
+        <label class="more-toggle" for="about-more"></label>
+        <div class="more-content">
+          <div class="spatial-grid">
+            <div class="spatial-card">
+              <img src="jamsil.png" alt="Applied spatial analysis around Jamsil">
+              <div class="spatial-title">Jamsil</div>
+              <div class="spatial-desc">
+                Accessibility and land-use filtering around Jamsil reveal how service reach interacts with residential and commercial patterns.
+              </div>
+            </div>
+
+            <div class="spatial-card">
+              <img src="sangam.png" alt="Applied spatial analysis around Sangam">
+              <div class="spatial-title">Sangam</div>
+              <div class="spatial-desc">
+                The Sangam case shows a different spatial structure where reachable demand is shaped by large-scale facilities and fragmented urban form.
+              </div>
+            </div>
+
+            <div class="spatial-card">
+              <img src="gocheok.png" alt="Applied spatial analysis around Gocheok">
+              <div class="spatial-title">Gocheok</div>
+              <div class="spatial-desc">
+                In Gocheok, grid-based interpretation highlights how catchment areas shift under distinct land-use restrictions and neighborhood morphology.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
