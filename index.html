@@ -30,6 +30,8 @@
       --logo-size: 78px;
       --meta-font: 1.04rem;
       --meta-sub-font: 0.98rem;
+      --personal-color: #ef5da8;
+      --public-color: #111111;
     }
 
     * { box-sizing: border-box; }
@@ -474,13 +476,14 @@
     .map-panel {
       border: 1px solid var(--line);
       overflow: hidden;
-      min-height: 660px;
+      height: 720px;
       background: #dfe7ef;
     }
 
     #worldMap {
       width: 100%;
-      height: 660px;
+      height: 720px;
+      display: block;
     }
 
     .whoami-side {
@@ -490,7 +493,7 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
-      min-height: 660px;
+      min-height: 720px;
     }
 
     .whoami-intro {
@@ -563,7 +566,7 @@
       display: grid;
       gap: 14px;
       margin-top: 6px;
-      max-height: 290px;
+      max-height: 305px;
       overflow: auto;
       padding-right: 4px;
     }
@@ -738,15 +741,15 @@
         white-space: normal;
       }
 
-      .map-panel,
-      .whoami-side,
+      .map-panel {
+        height: 520px;
+      }
+
       #worldMap {
-        min-height: 500px;
-        height: 500px;
+        height: 520px;
       }
 
       .whoami-side {
-        height: auto;
         min-height: auto;
       }
     }
@@ -1079,7 +1082,7 @@ Online · 2022</div>
 
         <div class="whoami-side">
           <p class="whoami-intro">
-            This map traces the places where I studied, worked, presented research, conducted fieldwork, and traveled. It reflects how my academic interests in cities, regions, and mobility have also been shaped by lived spatial experience.
+            This map traces the places where I studied, worked, presented research, conducted fieldwork, traveled, and served. It reflects how my academic interests in cities, regions, and mobility have also been shaped by lived spatial experience.
           </p>
 
           <div class="whoami-legend">
@@ -1088,8 +1091,8 @@ Online · 2022</div>
             <span class="legend-item"><span class="legend-swatch" style="background:#00a6a6;"></span>North America</span>
             <span class="legend-item"><span class="legend-swatch" style="background:#f08c2b;"></span>UK / Australia</span>
             <span class="legend-item"><span class="legend-swatch" style="background:#2f9e44;"></span>Hong Kong / Vietnam</span>
-            <span class="legend-item"><span class="legend-swatch" style="background:#111111;"></span>Public / academic center</span>
-            <span class="legend-item"><span class="legend-swatch" style="background:#ffffff; border:1px solid #bbb;"></span>Personal center</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#111111;"></span>Public center</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#ef5da8;"></span>Personal center</span>
           </div>
 
           <div class="whoami-card">
@@ -1208,6 +1211,26 @@ Online · 2022</div>
         meta: "Tags: AURI · projects · papers · conferences"
       },
       {
+        label: "Goseong, Gangwon-do, South Korea",
+        country: "South Korea",
+        lat: 38.3806,
+        lng: 128.4677,
+        kind: "public",
+        type: "Military service",
+        desc: "The region where I completed my military service, adding another layer of lived regional experience in South Korea beyond academic and professional trajectories.",
+        meta: "Tags: military service · lived regional experience"
+      },
+      {
+        label: "Jeju, South Korea",
+        country: "South Korea",
+        lat: 33.4996,
+        lng: 126.5312,
+        kind: "personal",
+        type: "Personal travel",
+        desc: "Personal travel experience in Jeju, deepening my interest in tourism, landscape, and island-based urban-regional dynamics.",
+        meta: "Tags: personal travel · island region · tourism"
+      },
+      {
         label: "Guildford, United Kingdom",
         country: "United Kingdom",
         lat: 51.2362,
@@ -1246,6 +1269,26 @@ Online · 2022</div>
         type: "Personal travel / urban regeneration interest",
         desc: "Visited the historical Bikan district as part of my broader interest in regeneration, preservation, and adaptive reuse in urban settings.",
         meta: "Tags: personal travel · historic district · regeneration"
+      },
+      {
+        label: "Takamatsu, Japan",
+        country: "Japan",
+        lat: 34.3428,
+        lng: 134.0466,
+        kind: "personal",
+        type: "Personal travel",
+        desc: "Personal travel experience in Takamatsu, connected to my broader interest in regional urban environments and island access networks in Japan.",
+        meta: "Tags: personal travel · regional city"
+      },
+      {
+        label: "Fukuoka, Japan",
+        country: "Japan",
+        lat: 33.5902,
+        lng: 130.4017,
+        kind: "personal",
+        type: "Personal travel",
+        desc: "Personal travel experience in Fukuoka, expanding my interest in Japanese metropolitan form and regional connectivity.",
+        meta: "Tags: personal travel · metropolitan region"
       },
       {
         label: "Nagoya, Japan",
@@ -1362,7 +1405,7 @@ Online · 2022</div>
 
     function getMarkerColors(place) {
       const outer = countryColors[place.country] || "#888888";
-      const inner = place.kind === "public" ? "#111111" : "#ffffff";
+      const inner = place.kind === "public" ? "#111111" : "#ef5da8";
       return { outer, inner };
     }
 
@@ -1409,7 +1452,7 @@ Online · 2022</div>
         btn.addEventListener("click", () => {
           setActivePlace(place, place.idx);
           if (window.worldMapInstance) {
-            window.worldMapInstance.setView([place.lat, place.lng], 6, {
+            window.worldMapInstance.setView([place.lat, place.lng], 7, {
               animate: true,
               duration: 1
             });
@@ -1426,7 +1469,7 @@ Online · 2022</div>
       worldCopyJump: true,
       zoomControl: true,
       minZoom: 2,
-      maxZoom: 12
+      maxZoom: 13
     }).setView([28, 115], 2);
 
     window.worldMapInstance = map;
@@ -1463,6 +1506,10 @@ Online · 2022</div>
     });
 
     setActivePlace(whoAmIData[1], 1);
+
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 300);
   </script>
 </body>
 </html>
