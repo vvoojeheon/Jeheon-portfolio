@@ -474,13 +474,13 @@
     .map-panel {
       border: 1px solid var(--line);
       overflow: hidden;
-      min-height: 620px;
+      min-height: 660px;
       background: #dfe7ef;
     }
 
     #worldMap {
       width: 100%;
-      height: 620px;
+      height: 660px;
     }
 
     .whoami-side {
@@ -490,7 +490,7 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
-      min-height: 620px;
+      min-height: 660px;
     }
 
     .whoami-intro {
@@ -498,6 +498,30 @@
       color: var(--muted);
       line-height: 1.65;
       margin: 0;
+    }
+
+    .whoami-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      font-size: 0.86rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 0;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      display: inline-block;
     }
 
     .whoami-card {
@@ -535,13 +559,33 @@
       margin: 0;
     }
 
-    .whoami-list {
+    .whoami-groups {
       display: grid;
-      gap: 10px;
+      gap: 14px;
       margin-top: 6px;
-      max-height: 260px;
+      max-height: 290px;
       overflow: auto;
       padding-right: 4px;
+    }
+
+    .country-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    .country-heading {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin: 0;
+      padding-top: 2px;
+    }
+
+    .country-buttons {
+      display: grid;
+      gap: 8px;
     }
 
     .whoami-button {
@@ -550,8 +594,16 @@
       background: #fff;
       padding: 10px 12px;
       cursor: pointer;
-      font-size: 0.94rem;
+      font-size: 0.93rem;
       color: var(--text);
+      line-height: 1.45;
+    }
+
+    .whoami-button .button-type {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 2px;
     }
 
     .whoami-button.active {
@@ -572,9 +624,54 @@
       font-family: inherit;
     }
 
+    .leaflet-popup-content-wrapper {
+      border-radius: 10px;
+    }
+
     .custom-popup {
       font-size: 0.92rem;
       line-height: 1.5;
+    }
+
+    .marker-wrap {
+      position: relative;
+      width: 18px;
+      height: 18px;
+    }
+
+    .marker-pulse {
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      animation: pulse-ring 2.2s ease-out infinite;
+      opacity: 0.45;
+    }
+
+    .marker-dot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.6);
+        opacity: 0.55;
+      }
+      70% {
+        transform: scale(2.3);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(2.3);
+        opacity: 0;
+      }
     }
 
     .contact-center {
@@ -644,8 +741,8 @@
       .map-panel,
       .whoami-side,
       #worldMap {
-        min-height: 480px;
-        height: 480px;
+        min-height: 500px;
+        height: 500px;
       }
 
       .whoami-side {
@@ -985,6 +1082,16 @@ Online · 2022</div>
             This map traces the places where I studied, worked, presented research, conducted fieldwork, and traveled. It reflects how my academic interests in cities, regions, and mobility have also been shaped by lived spatial experience.
           </p>
 
+          <div class="whoami-legend">
+            <span class="legend-item"><span class="legend-swatch" style="background:#3d6dcc;"></span>South Korea</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#7c4dff;"></span>Japan</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#00a6a6;"></span>North America</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#f08c2b;"></span>UK / Australia</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#2f9e44;"></span>Hong Kong / Vietnam</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#111111;"></span>Public / academic center</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#ffffff; border:1px solid #bbb;"></span>Personal center</span>
+          </div>
+
           <div class="whoami-card">
             <h3 class="whoami-place" id="placeTitle">Seoul, South Korea</h3>
             <p class="whoami-type" id="placeType">Academic training</p>
@@ -992,14 +1099,14 @@ Online · 2022</div>
               Master's period at Seoul National University, including work at the Urban Studies and Design Lab and the development of my master's thesis.
             </p>
             <p class="whoami-meta" id="placeMeta">
-              Tags: master's study · lab experience · thesis research
+              Tags: master's study · urban design lab · thesis research
             </p>
           </div>
 
-          <div class="whoami-list" id="placeButtons"></div>
+          <div class="whoami-groups" id="placeGroups"></div>
 
           <div class="whoami-note">
-            Click a marker on the map or select a location from the list.
+            Click a marker on the map or select a location from the grouped list. Zoom is enabled for closer inspection.
           </div>
         </div>
       </div>
@@ -1052,163 +1159,218 @@ Online · 2022</div>
     const whoAmIData = [
       {
         label: "Daejeon, South Korea",
+        country: "South Korea",
         lat: 36.3504,
         lng: 127.3845,
+        kind: "public",
         type: "Study / research / conference",
         desc: "My undergraduate years were based in Daejeon. It is also linked to my experience at the Daejeon Sejong Research Institute and conference work related to spatial analysis focusing on the old downtown of Daejeon.",
         meta: "Tags: undergraduate study · DSRI · conference paper"
       },
       {
         label: "Seoul, South Korea",
+        country: "South Korea",
         lat: 37.5665,
         lng: 126.9780,
+        kind: "public",
         type: "Academic training",
         desc: "Master's period at Seoul National University, including work at the Urban Studies and Design Lab and the development of my master's thesis.",
         meta: "Tags: master's study · urban design lab · thesis research"
       },
       {
         label: "Jangsu, South Korea",
+        country: "South Korea",
         lat: 35.6473,
         lng: 127.5215,
+        kind: "public",
         type: "Field site / embodied research",
         desc: "Field site of my master's thesis. I also participated directly in the trail running event multiple times, including 20K and 38K courses, which gave me an embodied understanding of the event landscape.",
         meta: "Tags: master's thesis site · trail running · repeated field visits"
       },
       {
         label: "Busan, South Korea",
+        country: "South Korea",
         lat: 35.1796,
         lng: 129.0756,
+        kind: "public",
         type: "Conference",
         desc: "Conference presentation related to spatial analysis focusing on Gangnam-gu, Seoul.",
         meta: "Tags: conference · spatial analysis"
       },
       {
+        label: "Sejong, South Korea",
+        country: "South Korea",
+        lat: 36.4800,
+        lng: 127.2890,
+        kind: "public",
+        type: "Institutional research",
+        desc: "Work experience at a national research institute, with participation in multiple academic activities including papers, conferences, and policy or planning projects.",
+        meta: "Tags: AURI · projects · papers · conferences"
+      },
+      {
         label: "Guildford, United Kingdom",
+        country: "United Kingdom",
         lat: 51.2362,
         lng: -0.5704,
+        kind: "public",
         type: "Conference / research",
         desc: "Academic work derived from an R&D project conducted at the research institute, focusing on carbon neutrality and rooftop greenhouses based on distributed energy systems.",
         meta: "Tags: conference · R&D-based research · carbon neutrality"
       },
       {
         label: "Brisbane, Australia",
+        country: "Australia",
         lat: -27.4698,
         lng: 153.0251,
+        kind: "public",
         type: "Conference / research",
         desc: "Academic work derived from an R&D project conducted at the research institute, focusing on carbon neutrality and rooftop greenhouses based on distributed energy systems.",
         meta: "Tags: conference · R&D-based research · rooftop greenhouse"
       },
       {
-        label: "Sejong, South Korea",
-        lat: 36.4800,
-        lng: 127.2890,
-        type: "Institutional research",
-        desc: "Work experience at a national research institute, with participation in multiple academic activities including papers, conferences, and policy or planning projects.",
-        meta: "Tags: AURI · projects · papers · conferences"
-      },
-      {
         label: "Naoshima, Japan",
+        country: "Japan",
         lat: 34.4594,
         lng: 133.9950,
+        kind: "personal",
         type: "Personal travel / urban regeneration interest",
         desc: "Personal travel destination associated with my interest in urban regeneration and place-making, especially the art-island projects linked to Tadao Ando.",
         meta: "Tags: personal travel · art island · urban regeneration"
       },
       {
         label: "Kurashiki, Japan",
+        country: "Japan",
         lat: 34.5850,
         lng: 133.7721,
+        kind: "personal",
         type: "Personal travel / urban regeneration interest",
         desc: "Visited the historical Bikan district as part of my broader interest in regeneration, preservation, and adaptive reuse in urban settings.",
         meta: "Tags: personal travel · historic district · regeneration"
       },
       {
         label: "Nagoya, Japan",
+        country: "Japan",
         lat: 35.1815,
         lng: 136.9066,
+        kind: "personal",
         type: "Personal travel",
         desc: "Personal travel experience contributing to my broader understanding of Japanese urban form and regional city environments.",
         meta: "Tags: personal travel"
       },
       {
         label: "Toronto, Canada",
+        country: "Canada",
         lat: 43.6532,
         lng: -79.3832,
+        kind: "personal",
         type: "Travel / language study",
         desc: "Personal travel and a short language-study experience of about two weeks.",
         meta: "Tags: travel · language study"
       },
       {
         label: "Orlando, United States",
+        country: "United States",
         lat: 28.5383,
         lng: -81.3792,
+        kind: "personal",
         type: "Travel / language study",
         desc: "Part of my broader U.S. travel experience and short-term language-study period.",
         meta: "Tags: personal travel · language study"
       },
       {
         label: "Washington, D.C., United States",
+        country: "United States",
         lat: 38.9072,
         lng: -77.0369,
+        kind: "personal",
         type: "Travel / language study",
         desc: "Visited as part of my personal travel and language-study experiences in the United States.",
         meta: "Tags: personal travel · language study"
       },
       {
         label: "New York, United States",
+        country: "United States",
         lat: 40.7128,
         lng: -74.0060,
+        kind: "personal",
         type: "Travel / language study",
         desc: "Part of my U.S. travel and language-study experiences, helping shape my interest in large metropolitan environments.",
         meta: "Tags: personal travel · language study · metropolis"
       },
       {
         label: "Long Island, United States",
+        country: "United States",
         lat: 40.7891,
         lng: -73.1350,
+        kind: "personal",
         type: "Travel / language study",
         desc: "Part of my U.S. stay during language-study and travel experiences.",
         meta: "Tags: personal travel · language study"
       },
       {
         label: "Philadelphia, United States",
+        country: "United States",
         lat: 39.9526,
         lng: -75.1652,
+        kind: "personal",
         type: "Travel / language study",
         desc: "Visited through personal travel and language-study experience in the United States.",
         meta: "Tags: personal travel · language study"
       },
       {
         label: "Hong Kong",
+        country: "Hong Kong",
         lat: 22.3193,
         lng: 114.1694,
+        kind: "personal",
         type: "Personal travel",
         desc: "Personal travel experience that broadened my exposure to dense urban environments and East Asian metropolitan dynamics.",
         meta: "Tags: personal travel · dense city"
       },
       {
         label: "Da Nang, Vietnam",
+        country: "Vietnam",
         lat: 16.0544,
         lng: 108.2022,
+        kind: "personal",
         type: "Personal travel",
         desc: "Visited as part of personal travel in Vietnam.",
         meta: "Tags: personal travel"
       },
       {
         label: "Hoi An, Vietnam",
+        country: "Vietnam",
         lat: 15.8801,
         lng: 108.3380,
+        kind: "personal",
         type: "Personal travel",
         desc: "Visited as part of personal travel in Vietnam, with particular interest in the preserved urban landscape and tourism-based local economy.",
         meta: "Tags: personal travel · heritage landscape · tourism"
       }
     ];
 
+    const countryColors = {
+      "South Korea": "#3d6dcc",
+      "Japan": "#7c4dff",
+      "United States": "#00a6a6",
+      "Canada": "#00a6a6",
+      "United Kingdom": "#f08c2b",
+      "Australia": "#f08c2b",
+      "Hong Kong": "#2f9e44",
+      "Vietnam": "#2f9e44"
+    };
+
+    function getMarkerColors(place) {
+      const outer = countryColors[place.country] || "#888888";
+      const inner = place.kind === "public" ? "#111111" : "#ffffff";
+      return { outer, inner };
+    }
+
     const titleEl = document.getElementById("placeTitle");
     const typeEl = document.getElementById("placeType");
     const descEl = document.getElementById("placeDesc");
     const metaEl = document.getElementById("placeMeta");
-    const buttonWrap = document.getElementById("placeButtons");
+    const groupsWrap = document.getElementById("placeGroups");
 
     function setActivePlace(place, idx = null) {
       titleEl.textContent = place.label;
@@ -1216,51 +1378,84 @@ Online · 2022</div>
       descEl.textContent = place.desc;
       metaEl.textContent = place.meta;
 
-      [...buttonWrap.querySelectorAll(".whoami-button")].forEach((btn, i) => {
-        btn.classList.toggle("active", i === idx);
+      [...groupsWrap.querySelectorAll(".whoami-button")].forEach((btn) => {
+        btn.classList.toggle("active", Number(btn.dataset.idx) === idx);
       });
     }
 
-    whoAmIData.forEach((place, idx) => {
-      const btn = document.createElement("button");
-      btn.className = "whoami-button";
-      btn.textContent = place.label;
-      btn.addEventListener("click", () => {
-        setActivePlace(place, idx);
-        if (window.worldMapInstance) {
-          window.worldMapInstance.setView([place.lat, place.lng], Math.max(window.worldMapInstance.getZoom(), 4), {
-            animate: true,
-            duration: 1
-          });
-        }
+    const grouped = whoAmIData.reduce((acc, place, idx) => {
+      if (!acc[place.country]) acc[place.country] = [];
+      acc[place.country].push({ ...place, idx });
+      return acc;
+    }, {});
+
+    Object.keys(grouped).forEach(country => {
+      const group = document.createElement("div");
+      group.className = "country-group";
+
+      const heading = document.createElement("p");
+      heading.className = "country-heading";
+      heading.textContent = country;
+      group.appendChild(heading);
+
+      const buttons = document.createElement("div");
+      buttons.className = "country-buttons";
+
+      grouped[country].forEach(place => {
+        const btn = document.createElement("button");
+        btn.className = "whoami-button";
+        btn.dataset.idx = place.idx;
+        btn.innerHTML = `<span>${place.label}</span><span class="button-type">${place.type}</span>`;
+        btn.addEventListener("click", () => {
+          setActivePlace(place, place.idx);
+          if (window.worldMapInstance) {
+            window.worldMapInstance.setView([place.lat, place.lng], 6, {
+              animate: true,
+              duration: 1
+            });
+          }
+        });
+        buttons.appendChild(btn);
       });
-      buttonWrap.appendChild(btn);
+
+      group.appendChild(buttons);
+      groupsWrap.appendChild(group);
     });
 
     const map = L.map('worldMap', {
       worldCopyJump: true,
       zoomControl: true,
       minZoom: 2,
-      maxZoom: 8
+      maxZoom: 12
     }).setView([28, 115], 2);
 
     window.worldMapInstance = map;
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+      subdomains: 'abcd',
+      maxZoom: 20
     }).addTo(map);
 
-    const activeIcon = L.divIcon({
-      className: '',
-      html: '<div style="width:14px;height:14px;border-radius:50%;background:#3d6dcc;border:2px solid #fff;box-shadow:0 0 0 4px rgba(61,109,204,0.18);"></div>',
-      iconSize: [14, 14],
-      iconAnchor: [7, 7]
-    });
+    function createPulseIcon(place) {
+      const { outer, inner } = getMarkerColors(place);
+      return L.divIcon({
+        className: '',
+        html: `
+          <div class="marker-wrap">
+            <div class="marker-pulse" style="background:${outer};"></div>
+            <div class="marker-dot" style="background:${inner};"></div>
+          </div>
+        `,
+        iconSize: [18, 18],
+        iconAnchor: [9, 9]
+      });
+    }
 
     whoAmIData.forEach((place, idx) => {
-      const marker = L.marker([place.lat, place.lng], { icon: activeIcon }).addTo(map);
+      const marker = L.marker([place.lat, place.lng], { icon: createPulseIcon(place) }).addTo(map);
       marker.bindPopup(
-        `<div class="custom-popup"><strong>${place.label}</strong><br>${place.type}</div>`
+        `<div class="custom-popup"><strong>${place.label}</strong><br>${place.type}<br><span style="color:#666;">${place.country}</span></div>`
       );
       marker.on('click', () => {
         setActivePlace(place, idx);
