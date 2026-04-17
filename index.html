@@ -31,7 +31,7 @@
       --meta-font: 1.04rem;
       --meta-sub-font: 0.98rem;
       --personal-color: #ef5da8;
-      --public-color: #111111;
+      --public-color: #3d6dcc;
     }
 
     * { box-sizing: border-box; }
@@ -478,12 +478,14 @@
       overflow: hidden;
       height: 720px;
       background: #dfe7ef;
+      display: flex;
     }
 
     #worldMap {
       width: 100%;
-      height: 720px;
+      height: 100%;
       display: block;
+      flex: 1 1 auto;
     }
 
     .whoami-side {
@@ -493,7 +495,7 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
-      min-height: 720px;
+      height: 720px;
     }
 
     .whoami-intro {
@@ -745,11 +747,8 @@
         height: 520px;
       }
 
-      #worldMap {
-        height: 520px;
-      }
-
       .whoami-side {
+        height: auto;
         min-height: auto;
       }
     }
@@ -1091,7 +1090,7 @@ Online · 2022</div>
             <span class="legend-item"><span class="legend-swatch" style="background:#00a6a6;"></span>North America</span>
             <span class="legend-item"><span class="legend-swatch" style="background:#f08c2b;"></span>UK / Australia</span>
             <span class="legend-item"><span class="legend-swatch" style="background:#2f9e44;"></span>Hong Kong / Vietnam</span>
-            <span class="legend-item"><span class="legend-swatch" style="background:#111111;"></span>Public center</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#3d6dcc;"></span>Public center</span>
             <span class="legend-item"><span class="legend-swatch" style="background:#ef5da8;"></span>Personal center</span>
           </div>
 
@@ -1160,236 +1159,29 @@ Online · 2022</div>
 
   <script>
     const whoAmIData = [
-      {
-        label: "Daejeon, South Korea",
-        country: "South Korea",
-        lat: 36.3504,
-        lng: 127.3845,
-        kind: "public",
-        type: "Study / research / conference",
-        desc: "My undergraduate years were based in Daejeon. It is also linked to my experience at the Daejeon Sejong Research Institute and conference work related to spatial analysis focusing on the old downtown of Daejeon.",
-        meta: "Tags: undergraduate study · DSRI · conference paper"
-      },
-      {
-        label: "Seoul, South Korea",
-        country: "South Korea",
-        lat: 37.5665,
-        lng: 126.9780,
-        kind: "public",
-        type: "Academic training",
-        desc: "Master's period at Seoul National University, including work at the Urban Studies and Design Lab and the development of my master's thesis.",
-        meta: "Tags: master's study · urban design lab · thesis research"
-      },
-      {
-        label: "Jangsu, South Korea",
-        country: "South Korea",
-        lat: 35.6473,
-        lng: 127.5215,
-        kind: "public",
-        type: "Field site / embodied research",
-        desc: "Field site of my master's thesis. I also participated directly in the trail running event multiple times, including 20K and 38K courses, which gave me an embodied understanding of the event landscape.",
-        meta: "Tags: master's thesis site · trail running · repeated field visits"
-      },
-      {
-        label: "Busan, South Korea",
-        country: "South Korea",
-        lat: 35.1796,
-        lng: 129.0756,
-        kind: "public",
-        type: "Conference",
-        desc: "Conference presentation related to spatial analysis focusing on Gangnam-gu, Seoul.",
-        meta: "Tags: conference · spatial analysis"
-      },
-      {
-        label: "Sejong, South Korea",
-        country: "South Korea",
-        lat: 36.4800,
-        lng: 127.2890,
-        kind: "public",
-        type: "Institutional research",
-        desc: "Work experience at a national research institute, with participation in multiple academic activities including papers, conferences, and policy or planning projects.",
-        meta: "Tags: AURI · projects · papers · conferences"
-      },
-      {
-        label: "Goseong, Gangwon-do, South Korea",
-        country: "South Korea",
-        lat: 38.3806,
-        lng: 128.4677,
-        kind: "public",
-        type: "Military service",
-        desc: "The region where I completed my military service, adding another layer of lived regional experience in South Korea beyond academic and professional trajectories.",
-        meta: "Tags: military service · lived regional experience"
-      },
-      {
-        label: "Jeju, South Korea",
-        country: "South Korea",
-        lat: 33.4996,
-        lng: 126.5312,
-        kind: "personal",
-        type: "Personal travel",
-        desc: "Personal travel experience in Jeju, deepening my interest in tourism, landscape, and island-based urban-regional dynamics.",
-        meta: "Tags: personal travel · island region · tourism"
-      },
-      {
-        label: "Guildford, United Kingdom",
-        country: "United Kingdom",
-        lat: 51.2362,
-        lng: -0.5704,
-        kind: "public",
-        type: "Conference / research",
-        desc: "Academic work derived from an R&D project conducted at the research institute, focusing on carbon neutrality and rooftop greenhouses based on distributed energy systems.",
-        meta: "Tags: conference · R&D-based research · carbon neutrality"
-      },
-      {
-        label: "Brisbane, Australia",
-        country: "Australia",
-        lat: -27.4698,
-        lng: 153.0251,
-        kind: "public",
-        type: "Conference / research",
-        desc: "Academic work derived from an R&D project conducted at the research institute, focusing on carbon neutrality and rooftop greenhouses based on distributed energy systems.",
-        meta: "Tags: conference · R&D-based research · rooftop greenhouse"
-      },
-      {
-        label: "Naoshima, Japan",
-        country: "Japan",
-        lat: 34.4594,
-        lng: 133.9950,
-        kind: "personal",
-        type: "Personal travel / urban regeneration interest",
-        desc: "Personal travel destination associated with my interest in urban regeneration and place-making, especially the art-island projects linked to Tadao Ando.",
-        meta: "Tags: personal travel · art island · urban regeneration"
-      },
-      {
-        label: "Kurashiki, Japan",
-        country: "Japan",
-        lat: 34.5850,
-        lng: 133.7721,
-        kind: "personal",
-        type: "Personal travel / urban regeneration interest",
-        desc: "Visited the historical Bikan district as part of my broader interest in regeneration, preservation, and adaptive reuse in urban settings.",
-        meta: "Tags: personal travel · historic district · regeneration"
-      },
-      {
-        label: "Takamatsu, Japan",
-        country: "Japan",
-        lat: 34.3428,
-        lng: 134.0466,
-        kind: "personal",
-        type: "Personal travel",
-        desc: "Personal travel experience in Takamatsu, connected to my broader interest in regional urban environments and island access networks in Japan.",
-        meta: "Tags: personal travel · regional city"
-      },
-      {
-        label: "Fukuoka, Japan",
-        country: "Japan",
-        lat: 33.5902,
-        lng: 130.4017,
-        kind: "personal",
-        type: "Personal travel",
-        desc: "Personal travel experience in Fukuoka, expanding my interest in Japanese metropolitan form and regional connectivity.",
-        meta: "Tags: personal travel · metropolitan region"
-      },
-      {
-        label: "Nagoya, Japan",
-        country: "Japan",
-        lat: 35.1815,
-        lng: 136.9066,
-        kind: "personal",
-        type: "Personal travel",
-        desc: "Personal travel experience contributing to my broader understanding of Japanese urban form and regional city environments.",
-        meta: "Tags: personal travel"
-      },
-      {
-        label: "Toronto, Canada",
-        country: "Canada",
-        lat: 43.6532,
-        lng: -79.3832,
-        kind: "personal",
-        type: "Travel / language study",
-        desc: "Personal travel and a short language-study experience of about two weeks.",
-        meta: "Tags: travel · language study"
-      },
-      {
-        label: "Orlando, United States",
-        country: "United States",
-        lat: 28.5383,
-        lng: -81.3792,
-        kind: "personal",
-        type: "Travel / language study",
-        desc: "Part of my broader U.S. travel experience and short-term language-study period.",
-        meta: "Tags: personal travel · language study"
-      },
-      {
-        label: "Washington, D.C., United States",
-        country: "United States",
-        lat: 38.9072,
-        lng: -77.0369,
-        kind: "personal",
-        type: "Travel / language study",
-        desc: "Visited as part of my personal travel and language-study experiences in the United States.",
-        meta: "Tags: personal travel · language study"
-      },
-      {
-        label: "New York, United States",
-        country: "United States",
-        lat: 40.7128,
-        lng: -74.0060,
-        kind: "personal",
-        type: "Travel / language study",
-        desc: "Part of my U.S. travel and language-study experiences, helping shape my interest in large metropolitan environments.",
-        meta: "Tags: personal travel · language study · metropolis"
-      },
-      {
-        label: "Long Island, United States",
-        country: "United States",
-        lat: 40.7891,
-        lng: -73.1350,
-        kind: "personal",
-        type: "Travel / language study",
-        desc: "Part of my U.S. stay during language-study and travel experiences.",
-        meta: "Tags: personal travel · language study"
-      },
-      {
-        label: "Philadelphia, United States",
-        country: "United States",
-        lat: 39.9526,
-        lng: -75.1652,
-        kind: "personal",
-        type: "Travel / language study",
-        desc: "Visited through personal travel and language-study experience in the United States.",
-        meta: "Tags: personal travel · language study"
-      },
-      {
-        label: "Hong Kong",
-        country: "Hong Kong",
-        lat: 22.3193,
-        lng: 114.1694,
-        kind: "personal",
-        type: "Personal travel",
-        desc: "Personal travel experience that broadened my exposure to dense urban environments and East Asian metropolitan dynamics.",
-        meta: "Tags: personal travel · dense city"
-      },
-      {
-        label: "Da Nang, Vietnam",
-        country: "Vietnam",
-        lat: 16.0544,
-        lng: 108.2022,
-        kind: "personal",
-        type: "Personal travel",
-        desc: "Visited as part of personal travel in Vietnam.",
-        meta: "Tags: personal travel"
-      },
-      {
-        label: "Hoi An, Vietnam",
-        country: "Vietnam",
-        lat: 15.8801,
-        lng: 108.3380,
-        kind: "personal",
-        type: "Personal travel",
-        desc: "Visited as part of personal travel in Vietnam, with particular interest in the preserved urban landscape and tourism-based local economy.",
-        meta: "Tags: personal travel · heritage landscape · tourism"
-      }
+      { label: "Daejeon, South Korea", country: "South Korea", lat: 36.3504, lng: 127.3845, kind: "public", type: "Study / research / conference", desc: "My undergraduate years were based in Daejeon. It is also linked to my experience at the Daejeon Sejong Research Institute and conference work related to spatial analysis focusing on the old downtown of Daejeon.", meta: "Tags: undergraduate study · DSRI · conference paper" },
+      { label: "Seoul, South Korea", country: "South Korea", lat: 37.5665, lng: 126.9780, kind: "public", type: "Academic training", desc: "Master's period at Seoul National University, including work at the Urban Studies and Design Lab and the development of my master's thesis.", meta: "Tags: master's study · urban design lab · thesis research" },
+      { label: "Jangsu, South Korea", country: "South Korea", lat: 35.6473, lng: 127.5215, kind: "public", type: "Field site / embodied research", desc: "Field site of my master's thesis. I also participated directly in the trail running event multiple times, including 20K and 38K courses, which gave me an embodied understanding of the event landscape.", meta: "Tags: master's thesis site · trail running · repeated field visits" },
+      { label: "Busan, South Korea", country: "South Korea", lat: 35.1796, lng: 129.0756, kind: "public", type: "Conference", desc: "Conference presentation related to spatial analysis focusing on Gangnam-gu, Seoul.", meta: "Tags: conference · spatial analysis" },
+      { label: "Sejong, South Korea", country: "South Korea", lat: 36.4800, lng: 127.2890, kind: "public", type: "Institutional research", desc: "Work experience at a national research institute, with participation in multiple academic activities including papers, conferences, and policy or planning projects.", meta: "Tags: AURI · projects · papers · conferences" },
+      { label: "Goseong, Gangwon-do, South Korea", country: "South Korea", lat: 38.3806, lng: 128.4677, kind: "public", type: "Military service", desc: "The region where I completed my military service, adding another layer of lived regional experience in South Korea beyond academic and professional trajectories.", meta: "Tags: military service · lived regional experience" },
+      { label: "Jeju, South Korea", country: "South Korea", lat: 33.4996, lng: 126.5312, kind: "personal", type: "Personal travel", desc: "Personal travel experience in Jeju, deepening my interest in tourism, landscape, and island-based urban-regional dynamics.", meta: "Tags: personal travel · island region · tourism" },
+      { label: "Guildford, United Kingdom", country: "United Kingdom", lat: 51.2362, lng: -0.5704, kind: "public", type: "Conference / research", desc: "Academic work derived from an R&D project conducted at the research institute, focusing on carbon neutrality and rooftop greenhouses based on distributed energy systems.", meta: "Tags: conference · R&D-based research · carbon neutrality" },
+      { label: "Brisbane, Australia", country: "Australia", lat: -27.4698, lng: 153.0251, kind: "public", type: "Conference / research", desc: "Academic work derived from an R&D project conducted at the research institute, focusing on carbon neutrality and rooftop greenhouses based on distributed energy systems.", meta: "Tags: conference · R&D-based research · rooftop greenhouse" },
+      { label: "Naoshima, Japan", country: "Japan", lat: 34.4594, lng: 133.9950, kind: "personal", type: "Personal travel / urban regeneration interest", desc: "Personal travel destination associated with my interest in urban regeneration and place-making, especially the art-island projects linked to Tadao Ando.", meta: "Tags: personal travel · art island · urban regeneration" },
+      { label: "Kurashiki, Japan", country: "Japan", lat: 34.5850, lng: 133.7721, kind: "personal", type: "Personal travel / urban regeneration interest", desc: "Visited the historical Bikan district as part of my broader interest in regeneration, preservation, and adaptive reuse in urban settings.", meta: "Tags: personal travel · historic district · regeneration" },
+      { label: "Takamatsu, Japan", country: "Japan", lat: 34.3428, lng: 134.0466, kind: "personal", type: "Personal travel", desc: "Personal travel experience in Takamatsu, connected to my broader interest in regional urban environments and island access networks in Japan.", meta: "Tags: personal travel · regional city" },
+      { label: "Fukuoka, Japan", country: "Japan", lat: 33.5902, lng: 130.4017, kind: "personal", type: "Personal travel", desc: "Personal travel experience in Fukuoka, expanding my interest in Japanese metropolitan form and regional connectivity.", meta: "Tags: personal travel · metropolitan region" },
+      { label: "Nagoya, Japan", country: "Japan", lat: 35.1815, lng: 136.9066, kind: "personal", type: "Personal travel", desc: "Personal travel experience contributing to my broader understanding of Japanese urban form and regional city environments.", meta: "Tags: personal travel" },
+      { label: "Toronto, Canada", country: "Canada", lat: 43.6532, lng: -79.3832, kind: "personal", type: "Travel / language study", desc: "Personal travel and a short language-study experience of about two weeks.", meta: "Tags: travel · language study" },
+      { label: "Orlando, United States", country: "United States", lat: 28.5383, lng: -81.3792, kind: "personal", type: "Travel / language study", desc: "Part of my broader U.S. travel experience and short-term language-study period.", meta: "Tags: personal travel · language study" },
+      { label: "Washington, D.C., United States", country: "United States", lat: 38.9072, lng: -77.0369, kind: "personal", type: "Travel / language study", desc: "Visited as part of my personal travel and language-study experiences in the United States.", meta: "Tags: personal travel · language study" },
+      { label: "New York, United States", country: "United States", lat: 40.7128, lng: -74.0060, kind: "personal", type: "Travel / language study", desc: "Part of my U.S. travel and language-study experiences, helping shape my interest in large metropolitan environments.", meta: "Tags: personal travel · language study · metropolis" },
+      { label: "Long Island, United States", country: "United States", lat: 40.7891, lng: -73.1350, kind: "personal", type: "Travel / language study", desc: "Part of my U.S. stay during language-study and travel experiences.", meta: "Tags: personal travel · language study" },
+      { label: "Philadelphia, United States", country: "United States", lat: 39.9526, lng: -75.1652, kind: "personal", type: "Travel / language study", desc: "Visited through personal travel and language-study experience in the United States.", meta: "Tags: personal travel · language study" },
+      { label: "Hong Kong", country: "Hong Kong", lat: 22.3193, lng: 114.1694, kind: "personal", type: "Personal travel", desc: "Personal travel experience that broadened my exposure to dense urban environments and East Asian metropolitan dynamics.", meta: "Tags: personal travel · dense city" },
+      { label: "Da Nang, Vietnam", country: "Vietnam", lat: 16.0544, lng: 108.2022, kind: "personal", type: "Personal travel", desc: "Visited as part of personal travel in Vietnam.", meta: "Tags: personal travel" },
+      { label: "Hoi An, Vietnam", country: "Vietnam", lat: 15.8801, lng: 108.3380, kind: "personal", type: "Personal travel", desc: "Visited as part of personal travel in Vietnam, with particular interest in the preserved urban landscape and tourism-based local economy.", meta: "Tags: personal travel · heritage landscape · tourism" }
     ];
 
     const countryColors = {
@@ -1405,7 +1197,7 @@ Online · 2022</div>
 
     function getMarkerColors(place) {
       const outer = countryColors[place.country] || "#888888";
-      const inner = place.kind === "public" ? "#111111" : "#ef5da8";
+      const inner = place.kind === "public" ? "#3d6dcc" : "#ef5da8";
       return { outer, inner };
     }
 
