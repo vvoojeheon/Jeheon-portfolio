@@ -8,6 +8,14 @@
     name="description"
     content="Jeheon Woo | PhD student in Urban Planning working on urban networks, uneven development, mobility, and spatial analysis."
   />
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
   <style>
     :root {
       --bg: #f3f3ef;
@@ -167,10 +175,6 @@
       border: none !important;
       box-shadow: none !important;
       mix-blend-mode: multiply;
-    }
-
-    .meta-logo.empty {
-      visibility: hidden;
     }
 
     .meta-text {
@@ -467,15 +471,14 @@
       align-items: stretch;
     }
 
-    .globe-panel {
-      background: #111;
+    .map-panel {
       border: 1px solid var(--line);
-      min-height: 620px;
-      position: relative;
       overflow: hidden;
+      min-height: 620px;
+      background: #dfe7ef;
     }
 
-    #globeViz {
+    #worldMap {
       width: 100%;
       height: 620px;
     }
@@ -565,6 +568,15 @@
       border-top: 1px solid var(--line);
     }
 
+    .leaflet-container {
+      font-family: inherit;
+    }
+
+    .custom-popup {
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
     .contact-center {
       text-align: center;
       max-width: 920px;
@@ -629,9 +641,9 @@
         white-space: normal;
       }
 
-      .globe-panel,
+      .map-panel,
       .whoami-side,
-      #globeViz {
+      #worldMap {
         min-height: 480px;
         height: 480px;
       }
@@ -964,8 +976,8 @@ Online · 2022</div>
     <section class="section" id="whoami">
       <h2>Who Am I</h2>
       <div class="whoami-wrap">
-        <div class="globe-panel">
-          <div id="globeViz"></div>
+        <div class="map-panel">
+          <div id="worldMap"></div>
         </div>
 
         <div class="whoami-side">
@@ -987,7 +999,7 @@ Online · 2022</div>
           <div class="whoami-list" id="placeButtons"></div>
 
           <div class="whoami-note">
-            Click a point on the globe or select a location from the list.
+            Click a marker on the map or select a location from the list.
           </div>
         </div>
       </div>
@@ -1030,8 +1042,12 @@ Online · 2022</div>
     </footer>
   </main>
 
-  <script src="https://unpkg.com/three"></script>
-  <script src="https://unpkg.com/globe.gl"></script>
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
   <script>
     const whoAmIData = [
       {
@@ -1211,32 +1227,45 @@ Online · 2022</div>
       btn.textContent = place.label;
       btn.addEventListener("click", () => {
         setActivePlace(place, idx);
+        if (window.worldMapInstance) {
+          window.worldMapInstance.setView([place.lat, place.lng], Math.max(window.worldMapInstance.getZoom(), 4), {
+            animate: true,
+            duration: 1
+          });
+        }
       });
       buttonWrap.appendChild(btn);
     });
 
-    const globe = Globe()(document.getElementById("globeViz"))
-      .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-dark.jpg")
-      .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
-      .backgroundColor("#111111")
-      .showAtmosphere(true)
-      .atmosphereColor("#4b74d1")
-      .atmosphereAltitude(0.14)
-      .pointOfView({ lat: 25, lng: 110, altitude: 2.1 }, 0)
-      .pointsData(whoAmIData)
-      .pointLat(d => d.lat)
-      .pointLng(d => d.lng)
-      .pointAltitude(0.03)
-      .pointRadius(0.38)
-      .pointColor(() => "#ffb357")
-      .pointLabel(d => d.label)
-      .onPointClick((point) => {
-        const idx = whoAmIData.findIndex(d => d.label === point.label);
-        setActivePlace(point, idx);
-      });
+    const map = L.map('worldMap', {
+      worldCopyJump: true,
+      zoomControl: true,
+      minZoom: 2,
+      maxZoom: 8
+    }).setView([28, 115], 2);
 
-    globe.controls().autoRotate = true;
-    globe.controls().autoRotateSpeed = 0.45;
+    window.worldMapInstance = map;
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const activeIcon = L.divIcon({
+      className: '',
+      html: '<div style="width:14px;height:14px;border-radius:50%;background:#3d6dcc;border:2px solid #fff;box-shadow:0 0 0 4px rgba(61,109,204,0.18);"></div>',
+      iconSize: [14, 14],
+      iconAnchor: [7, 7]
+    });
+
+    whoAmIData.forEach((place, idx) => {
+      const marker = L.marker([place.lat, place.lng], { icon: activeIcon }).addTo(map);
+      marker.bindPopup(
+        `<div class="custom-popup"><strong>${place.label}</strong><br>${place.type}</div>`
+      );
+      marker.on('click', () => {
+        setActivePlace(place, idx);
+      });
+    });
 
     setActivePlace(whoAmIData[1], 1);
   </script>
