@@ -32,7 +32,6 @@
       --meta-sub-font: 0.98rem;
       --personal-color: #ef5da8;
       --public-color: #3d6dcc;
-      --hero-panel-height: 980px;
     }
 
     * { box-sizing: border-box; }
@@ -103,15 +102,9 @@
     .hero {
       padding: 56px 0 56px;
       display: grid;
-      grid-template-columns: minmax(0, 1.78fr) minmax(280px, 0.72fr);
+      grid-template-columns: minmax(0, 1.8fr) minmax(280px, 0.78fr);
       gap: 42px;
       align-items: start;
-    }
-
-    .hero-left {
-      min-height: var(--hero-panel-height);
-      display: flex;
-      flex-direction: column;
     }
 
     .title {
@@ -141,7 +134,6 @@
       max-width: 900px;
       display: grid;
       gap: 34px;
-      padding-bottom: 8px;
     }
 
     .meta-block h3 {
@@ -219,54 +211,67 @@
     .profile {
       border: 1px solid var(--line);
       background: var(--paper);
-      padding: 22px;
-      min-height: var(--hero-panel-height);
+      padding: 28px 26px;
+    }
+
+    .profile-photo-wrap {
       display: flex;
-      flex-direction: column;
-    }
-
-    .profile img {
-      width: 100%;
-      max-width: 292px;
-      margin: 0 auto 18px;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      display: block;
-      background: #ecece7;
-    }
-
-    .name {
-      font-size: 2.7rem;
-      font-weight: 800;
-      letter-spacing: -0.05em;
-      line-height: 0.95;
-      margin: 0 0 10px;
-    }
-
-    .profile-info {
-      display: grid;
-      gap: 8px;
+      justify-content: center;
       margin-bottom: 18px;
     }
 
-    .profile-role {
-      font-size: 0.98rem;
-      color: var(--muted);
-      line-height: 1.5;
+    .profile img {
+      width: 230px;
+      height: 230px;
+      border-radius: 999px;
+      object-fit: cover;
+      display: block;
+      background: #ecece7;
+      border: 1px solid #e7e7e0;
     }
 
-    .profile-detail,
-    .profile-info a {
+    .name {
+      font-size: 2.55rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 0.96;
+      margin: 0 0 10px;
+      text-align: left;
+    }
+
+    .profile-summary {
       font-size: 0.98rem;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    .profile-links {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .profile-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.98rem;
+      color: var(--text);
+      line-height: 1.45;
+      width: fit-content;
+    }
+
+    .profile-link svg {
+      width: 19px;
+      height: 19px;
+      flex: 0 0 auto;
     }
 
     .downloads {
       display: grid;
       gap: 10px;
-      margin-top: auto;
-      padding-top: 16px;
+      margin-top: 8px;
     }
 
     .download-btn {
@@ -699,36 +704,6 @@
       }
     }
 
-    .contact-center {
-      text-align: center;
-      max-width: 920px;
-      margin: 0 auto;
-    }
-
-    .contact-row {
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1rem;
-      color: var(--text);
-      white-space: nowrap;
-    }
-
-    .contact-link svg {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-    }
-
     footer {
       padding: 34px 0 64px;
       color: var(--muted);
@@ -737,16 +712,13 @@
     }
 
     @media (max-width: 1100px) {
-      :root {
-        --hero-panel-height: auto;
-      }
-
       .hero {
-        grid-template-columns: 1.35fr 0.8fr;
+        grid-template-columns: 1.42fr 0.82fr;
       }
 
       .profile img {
-        max-width: 270px;
+        width: 210px;
+        height: 210px;
       }
     }
 
@@ -773,17 +745,9 @@
         gap: 16px;
       }
 
-      .profile-role {
-        white-space: normal;
-      }
-
-      .hero-left,
-      .profile {
-        min-height: auto;
-      }
-
       .profile img {
-        max-width: 300px;
+        width: 220px;
+        height: 220px;
       }
 
       .map-panel {
@@ -805,12 +769,9 @@
         gap: 12px;
       }
 
-      .contact-row {
-        gap: 16px;
-      }
-
       .profile img {
-        max-width: 240px;
+        width: 190px;
+        height: 190px;
       }
     }
   </style>
@@ -826,14 +787,13 @@
         <a href="#projects">Projects</a>
         <a href="#conferences">Conferences</a>
         <a href="#whoami">Who Am I</a>
-        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <div class="hero-left">
+      <div>
         <h1 class="title">
           <span class="title-line">What <span class="title-highlight">makes</span></span>
           <span class="title-line"><span class="title-highlight">cities</span> better?</span>
@@ -850,7 +810,10 @@
               <div class="meta-text">
                 <p class="meta-line-1">2026– &nbsp; Ph.D. Student in Urban Planning</p>
                 <p class="meta-line-2">Graduate School of Environmental Studies, Seoul National University</p>
-                <p class="meta-line-3">Major in Urban Social Innovation</p>
+                <p class="meta-line-3">Major in Urban Social Innovation (Advisor: Tae-Hyoung Tommy Gim)</p>
+                <p class="meta-line-3">
+                  <a href="https://planning.snu.ac.kr/" target="_blank" rel="noopener noreferrer">Department of Urban Planning, SNU</a>
+                </p>
               </div>
             </div>
 
@@ -915,14 +878,51 @@
       </div>
 
       <aside class="profile">
-        <img src="profile.jpg" alt="Portrait of Jeheon Woo">
+        <div class="profile-photo-wrap">
+          <img src="profile.jpg" alt="Portrait of Jeheon Woo">
+        </div>
+
         <h2 class="name">Jeheon Woo</h2>
 
-        <div class="profile-info">
-          <div class="profile-role">Ph.D. Student in Urban Planning (Urban Social Innovation), Seoul National University</div>
-          <div class="profile-detail">Daejeon, South Korea</div>
-          <a class="profile-detail" href="https://orcid.org/0009-0003-8837-3134" target="_blank" rel="noopener noreferrer">ORCID: 0009-0003-8837-3134</a>
-          <div class="profile-detail">Engineer Urban Planning (Certified)</div>
+        <div class="profile-summary">
+          Ph.D. Student in Urban Planning at Seoul National University
+        </div>
+
+        <div class="profile-links">
+          <div class="profile-link">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-6.75-5.52-6.75-11.1a6.75 6.75 0 1 1 13.5 0C18.75 15.48 12 21 12 21Z" fill="#111111"/><circle cx="12" cy="9.9" r="2.4" fill="#ffffff"/></svg>
+            <span>Daejeon, South Korea</span>
+          </div>
+
+          <div class="profile-link">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3.75 13.5 12 4.5l8.25 9M6 11.25V19.5h12v-8.25" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Engineer Urban Planning (Certified)</span>
+          </div>
+
+          <a class="profile-link" href="mailto:dnwpgjs98@snu.ac.kr">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 6.75h18v10.5H3V6.75Zm1.53 1.5L12 13.5l7.47-5.25" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Email</span>
+          </a>
+
+          <a class="profile-link" href="https://www.linkedin.com/in/jeheon-woo-a660b3299/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7.2 8.4a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM6 18h2.4v-8.4H6V18Zm4.2 0h2.4v-4.5c0-1.2.24-2.28 1.74-2.28 1.47 0 1.5 1.14 1.5 2.37V18h2.4v-4.92c0-2.4-.51-4.2-3.3-4.2-1.35 0-2.25.75-2.61 1.44h-.03V9.6H10.2V18Z" fill="#0A66C2"/></svg>
+            <span>LinkedIn</span>
+          </a>
+
+          <a class="profile-link" href="https://github.com/vvoojeheon" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.75a8.25 8.25 0 0 0-2.61 16.08c.42.09.57-.18.57-.39v-1.53c-2.31.51-2.79-.99-2.79-.99-.36-.93-.9-1.17-.9-1.17-.75-.51.06-.51.06-.51.81.06 1.23.84 1.23.84.75 1.23 1.92.87 2.4.66.06-.51.3-.87.54-1.08-1.86-.21-3.81-.93-3.81-4.2 0-.93.33-1.71.84-2.31-.09-.21-.36-1.05.09-2.19 0 0 .69-.21 2.28.87a7.5 7.5 0 0 1 4.14 0c1.59-1.08 2.28-.87 2.28-.87.45 1.14.18 1.98.09 2.19.54.6.84 1.38.84 2.31 0 3.27-1.95 3.99-3.84 4.2.3.27.57.78.57 1.56v2.31c0 .24.15.51.57.39A8.25 8.25 0 0 0 12 3.75Z" fill="#111111"/></svg>
+            <span>GitHub</span>
+          </a>
+
+          <a class="profile-link" href="https://scholar.google.com/citations?user=5yUDCNQAAAAJ&hl=ko" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m12 4.5 8.25 4.5L12 13.5 3.75 9 12 4.5Zm-5.25 7.14V15a5.25 5.25 0 0 0 10.5 0v-3.36L12 14.55l-5.25-2.91Z" fill="#111111"/></svg>
+            <span>Google Scholar</span>
+          </a>
+
+          <a class="profile-link" href="https://orcid.org/0009-0003-8837-3134" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-3.3 4.5a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1ZM7.8 10.8h1.8v5.4H7.8v-5.4Zm4.08 0h2.13c2.01 0 3.09 1.14 3.09 2.7 0 1.41-.81 2.37-2.22 2.61l1.77 2.19H14.7l-1.59-2.07h-.18v2.07h-1.05v-5.4Zm1.05.87v1.83h.9c1.2 0 1.98-.21 1.98-.93 0-.69-.66-.9-1.89-.9h-.99Z" fill="#A6CE39"/></svg>
+            <span>ORCID</span>
+          </a>
         </div>
 
         <div class="downloads">
@@ -1234,38 +1234,6 @@ Online · 2022</div>
           <div class="whoami-note">
             Click a marker on the map or select a location from the grouped list. Zoom is enabled for closer inspection.
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="contact-center">
-        <h2>Contact</h2>
-        <div class="contact-row">
-          <a class="contact-link" href="mailto:dnwpgjs98@snu.ac.kr" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M3 6.75h18v10.5H3V6.75Zm1.53 1.5L12 13.5l7.47-5.25" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Email</span>
-          </a>
-
-          <a class="contact-link" href="https://www.linkedin.com/in/jeheon-woo-a660b3299/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M7.2 8.4a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM6 18h2.4v-8.4H6V18Zm4.2 0h2.4v-4.5c0-1.2.24-2.28 1.74-2.28 1.47 0 1.5 1.14 1.5 2.37V18h2.4v-4.92c0-2.4-.51-4.2-3.3-4.2-1.35 0-2.25.75-2.61 1.44h-.03V9.6H10.2V18Z" fill="#111111"/></svg>
-            <span>LinkedIn</span>
-          </a>
-
-          <a class="contact-link" href="https://github.com/vvoojeheon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.75a8.25 8.25 0 0 0-2.61 16.08c.42.09.57-.18.57-.39v-1.53c-2.31.51-2.79-.99-2.79-.99-.36-.93-.9-1.17-.9-1.17-.75-.51.06-.51.06-.51.81.06 1.23.84 1.23.84.75 1.23 1.92.87 2.4.66.06-.51.3-.87.54-1.08-1.86-.21-3.81-.93-3.81-4.2 0-.93.33-1.71.84-2.31-.09-.21-.36-1.05.09-2.19 0 0 .69-.21 2.28.87a7.5 7.5 0 0 1 4.14 0c1.59-1.08 2.28-.87 2.28-.87.45 1.14.18 1.98.09 2.19.54.6.84 1.38.84 2.31 0 3.27-1.95 3.99-3.84 4.2.3.27.57.78.57 1.56v2.31c0 .24.15.51.57.39A8.25 8.25 0 0 0 12 3.75Z" fill="#111111"/></svg>
-            <span>GitHub</span>
-          </a>
-
-          <a class="contact-link" href="https://scholar.google.com/citations?user=5yUDCNQAAAAJ&hl=ko" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
-            <svg viewBox="0 0 24 24" fill="none"><path d="m12 4.5 8.25 4.5L12 13.5 3.75 9 12 4.5Zm-5.25 7.14V15a5.25 5.25 0 0 0 10.5 0v-3.36L12 14.55l-5.25-2.91Z" fill="#111111"/></svg>
-            <span>Google Scholar</span>
-          </a>
-
-          <a class="contact-link" href="https://orcid.org/0009-0003-8837-3134" target="_blank" rel="noopener noreferrer" aria-label="ORCID">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-3.3 4.5a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1ZM7.8 10.8h1.8v5.4H7.8v-5.4Zm4.08 0h2.13c2.01 0 3.09 1.14 3.09 2.7 0 1.41-.81 2.37-2.22 2.61l1.77 2.19H14.7l-1.59-2.07h-.18v2.07h-1.05v-5.4Zm1.05.87v1.83h.9c1.2 0 1.98-.21 1.98-.93 0-.69-.66-.9-1.89-.9h-.99Z" fill="#111111"/></svg>
-            <span>ORCID</span>
-          </a>
         </div>
       </div>
     </section>
