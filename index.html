@@ -102,22 +102,19 @@
     .hero {
       padding: 56px 0 56px;
       display: grid;
-      grid-template-columns: minmax(0, 1.8fr) minmax(280px, 0.78fr);
+      grid-template-columns: minmax(0, 1.82fr) minmax(300px, 0.78fr);
       gap: 42px;
       align-items: start;
     }
 
     .title {
-      font-size: clamp(4rem, 8vw, 7rem);
+      font-size: clamp(4.6rem, 8.8vw, 8rem);
       font-weight: 800;
-      line-height: 0.93;
-      letter-spacing: -0.065em;
+      line-height: 0.92;
+      letter-spacing: -0.075em;
       margin: 0;
-      max-width: 840px;
-    }
-
-    .title-line {
-      display: block;
+      max-width: none;
+      white-space: nowrap;
     }
 
     .title-highlight {
@@ -130,7 +127,7 @@
     }
 
     .hero-meta {
-      margin-top: 54px;
+      margin-top: 56px;
       max-width: 900px;
       display: grid;
       gap: 34px;
@@ -212,6 +209,7 @@
       border: 1px solid var(--line);
       background: var(--paper);
       padding: 28px 26px;
+      margin-top: 180px;
     }
 
     .profile-photo-wrap {
@@ -221,10 +219,11 @@
     }
 
     .profile img {
-      width: 230px;
-      height: 230px;
+      width: 200px;
+      height: 200px;
       border-radius: 999px;
       object-fit: cover;
+      object-position: center 30%;
       display: block;
       background: #ecece7;
       border: 1px solid #e7e7e0;
@@ -711,14 +710,25 @@
       text-align: center;
     }
 
+    @media (max-width: 1200px) {
+      .title {
+        white-space: normal;
+        font-size: clamp(4rem, 8vw, 6.5rem);
+      }
+    }
+
     @media (max-width: 1100px) {
       .hero {
         grid-template-columns: 1.42fr 0.82fr;
       }
 
+      .profile {
+        margin-top: 155px;
+      }
+
       .profile img {
-        width: 210px;
-        height: 210px;
+        width: 185px;
+        height: 185px;
       }
     }
 
@@ -731,8 +741,8 @@
       }
 
       .title {
-        font-size: 3.6rem;
-        max-width: none;
+        font-size: 3.8rem;
+        white-space: normal;
       }
 
       .topbar-inner {
@@ -745,9 +755,13 @@
         gap: 16px;
       }
 
+      .profile {
+        margin-top: 8px;
+      }
+
       .profile img {
-        width: 220px;
-        height: 220px;
+        width: 190px;
+        height: 190px;
       }
 
       .map-panel {
@@ -770,8 +784,12 @@
       }
 
       .profile img {
-        width: 190px;
-        height: 190px;
+        width: 170px;
+        height: 170px;
+      }
+
+      .title {
+        font-size: 3.1rem;
       }
     }
   </style>
@@ -795,8 +813,7 @@
     <section class="hero">
       <div>
         <h1 class="title">
-          <span class="title-line">What <span class="title-highlight">makes</span></span>
-          <span class="title-line"><span class="title-highlight">cities</span> better?</span>
+          What <span class="title-highlight">makes</span> <span class="title-highlight">cities</span> better?
         </h1>
 
         <div class="hero-meta">
@@ -890,37 +907,53 @@
 
         <div class="profile-links">
           <div class="profile-link">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-6.75-5.52-6.75-11.1a6.75 6.75 0 1 1 13.5 0C18.75 15.48 12 21 12 21Z" fill="#111111"/><circle cx="12" cy="9.9" r="2.4" fill="#ffffff"/></svg>
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 21s-6.75-5.52-6.75-11.1a6.75 6.75 0 1 1 13.5 0C18.75 15.48 12 21 12 21Z" fill="#111111"/>
+              <circle cx="12" cy="9.9" r="2.4" fill="#ffffff"/>
+            </svg>
             <span>Daejeon, South Korea</span>
           </div>
 
           <div class="profile-link">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M3.75 13.5 12 4.5l8.25 9M6 11.25V19.5h12v-8.25" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3.75 18.75 6v5.25c0 4.29-2.91 8.16-6.75 9-3.84-.84-6.75-4.71-6.75-9V6L12 3.75Z" stroke="#111111" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="m9.3 12.15 1.65 1.65 3.75-3.9" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             <span>Engineer Urban Planning (Certified)</span>
           </div>
 
           <a class="profile-link" href="mailto:dnwpgjs98@snu.ac.kr">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M3 6.75h18v10.5H3V6.75Zm1.53 1.5L12 13.5l7.47-5.25" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M3 6.75h18v10.5H3V6.75Zm1.53 1.5L12 13.5l7.47-5.25" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             <span>Email</span>
           </a>
 
           <a class="profile-link" href="https://www.linkedin.com/in/jeheon-woo-a660b3299/" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M7.2 8.4a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM6 18h2.4v-8.4H6V18Zm4.2 0h2.4v-4.5c0-1.2.24-2.28 1.74-2.28 1.47 0 1.5 1.14 1.5 2.37V18h2.4v-4.92c0-2.4-.51-4.2-3.3-4.2-1.35 0-2.25.75-2.61 1.44h-.03V9.6H10.2V18Z" fill="#0A66C2"/></svg>
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7.2 8.4a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM6 18h2.4v-8.4H6V18Zm4.2 0h2.4v-4.5c0-1.2.24-2.28 1.74-2.28 1.47 0 1.5 1.14 1.5 2.37V18h2.4v-4.92c0-2.4-.51-4.2-3.3-4.2-1.35 0-2.25.75-2.61 1.44h-.03V9.6H10.2V18Z" fill="#0A66C2"/>
+            </svg>
             <span>LinkedIn</span>
           </a>
 
           <a class="profile-link" href="https://github.com/vvoojeheon" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.75a8.25 8.25 0 0 0-2.61 16.08c.42.09.57-.18.57-.39v-1.53c-2.31.51-2.79-.99-2.79-.99-.36-.93-.9-1.17-.9-1.17-.75-.51.06-.51.06-.51.81.06 1.23.84 1.23.84.75 1.23 1.92.87 2.4.66.06-.51.3-.87.54-1.08-1.86-.21-3.81-.93-3.81-4.2 0-.93.33-1.71.84-2.31-.09-.21-.36-1.05.09-2.19 0 0 .69-.21 2.28.87a7.5 7.5 0 0 1 4.14 0c1.59-1.08 2.28-.87 2.28-.87.45 1.14.18 1.98.09 2.19.54.6.84 1.38.84 2.31 0 3.27-1.95 3.99-3.84 4.2.3.27.57.78.57 1.56v2.31c0 .24.15.51.57.39A8.25 8.25 0 0 0 12 3.75Z" fill="#111111"/></svg>
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3.75a8.25 8.25 0 0 0-2.61 16.08c.42.09.57-.18.57-.39v-1.53c-2.31.51-2.79-.99-2.79-.99-.36-.93-.9-1.17-.9-1.17-.75-.51.06-.51.06-.51.81.06 1.23.84 1.23.84.75 1.23 1.92.87 2.4.66.06-.51.3-.87.54-1.08-1.86-.21-3.81-.93-3.81-4.2 0-.93.33-1.71.84-2.31-.09-.21-.36-1.05.09-2.19 0 0 .69-.21 2.28.87a7.5 7.5 0 0 1 4.14 0c1.59-1.08 2.28-.87 2.28-.87.45 1.14.18 1.98.09 2.19.54.6.84 1.38.84 2.31 0 3.27-1.95 3.99-3.84 4.2.3.27.57.78.57 1.56v2.31c0 .24.15.51.57.39A8.25 8.25 0 0 0 12 3.75Z" fill="#111111"/>
+            </svg>
             <span>GitHub</span>
           </a>
 
           <a class="profile-link" href="https://scholar.google.com/citations?user=5yUDCNQAAAAJ&hl=ko" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none"><path d="m12 4.5 8.25 4.5L12 13.5 3.75 9 12 4.5Zm-5.25 7.14V15a5.25 5.25 0 0 0 10.5 0v-3.36L12 14.55l-5.25-2.91Z" fill="#111111"/></svg>
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="m12 4.5 8.25 4.5L12 13.5 3.75 9 12 4.5Zm-5.25 7.14V15a5.25 5.25 0 0 0 10.5 0v-3.36L12 14.55l-5.25-2.91Z" fill="#111111"/>
+            </svg>
             <span>Google Scholar</span>
           </a>
 
           <a class="profile-link" href="https://orcid.org/0009-0003-8837-3134" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-3.3 4.5a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1ZM7.8 10.8h1.8v5.4H7.8v-5.4Zm4.08 0h2.13c2.01 0 3.09 1.14 3.09 2.7 0 1.41-.81 2.37-2.22 2.61l1.77 2.19H14.7l-1.59-2.07h-.18v2.07h-1.05v-5.4Zm1.05.87v1.83h.9c1.2 0 1.98-.21 1.98-.93 0-.69-.66-.9-1.89-.9h-.99Z" fill="#A6CE39"/></svg>
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-3.3 4.5a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1ZM7.8 10.8h1.8v5.4H7.8v-5.4Zm4.08 0h2.13c2.01 0 3.09 1.14 3.09 2.7 0 1.41-.81 2.37-2.22 2.61l1.77 2.19H14.7l-1.59-2.07h-.18v2.07h-1.05v-5.4Zm1.05.87v1.83h.9c1.2 0 1.98-.21 1.98-.93 0-.69-.66-.9-1.89-.9h-.99Z" fill="#A6CE39"/>
+            </svg>
             <span>ORCID</span>
           </a>
         </div>
