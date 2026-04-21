@@ -27,11 +27,12 @@
       --accent-text: #ffffff;
       --max: 1180px;
       --nav-h: 72px;
-      --logo-size: 78px;
-      --meta-font: 1.04rem;
+      --logo-size: 74px;
+      --meta-font: 1.03rem;
       --meta-sub-font: 0.98rem;
       --personal-color: #ef5da8;
       --public-color: #3d6dcc;
+      --hero-panel-height: 980px;
     }
 
     * { box-sizing: border-box; }
@@ -102,9 +103,15 @@
     .hero {
       padding: 56px 0 56px;
       display: grid;
-      grid-template-columns: 1.55fr 0.95fr;
-      gap: 46px;
+      grid-template-columns: minmax(0, 1.78fr) minmax(280px, 0.72fr);
+      gap: 42px;
       align-items: start;
+    }
+
+    .hero-left {
+      min-height: var(--hero-panel-height);
+      display: flex;
+      flex-direction: column;
     }
 
     .title {
@@ -130,15 +137,16 @@
     }
 
     .hero-meta {
-      margin-top: 58px;
-      max-width: 920px;
+      margin-top: 54px;
+      max-width: 900px;
       display: grid;
-      gap: 40px;
+      gap: 34px;
+      padding-bottom: 8px;
     }
 
     .meta-block h3 {
       margin: 0 0 18px;
-      font-size: 1.3rem;
+      font-size: 1.34rem;
       font-weight: 800;
       letter-spacing: -0.02em;
     }
@@ -148,7 +156,7 @@
       grid-template-columns: var(--logo-size) 1fr;
       gap: 20px;
       align-items: start;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
 
     .meta-entry:last-child {
@@ -211,20 +219,24 @@
     .profile {
       border: 1px solid var(--line);
       background: var(--paper);
-      padding: 24px;
+      padding: 22px;
+      min-height: var(--hero-panel-height);
+      display: flex;
+      flex-direction: column;
     }
 
     .profile img {
       width: 100%;
+      max-width: 292px;
+      margin: 0 auto 18px;
       aspect-ratio: 4 / 5;
       object-fit: cover;
       display: block;
-      margin-bottom: 18px;
       background: #ecece7;
     }
 
     .name {
-      font-size: 2.9rem;
+      font-size: 2.7rem;
       font-weight: 800;
       letter-spacing: -0.05em;
       line-height: 0.95;
@@ -238,15 +250,14 @@
     }
 
     .profile-role {
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--muted);
       line-height: 1.5;
-      white-space: nowrap;
     }
 
     .profile-detail,
     .profile-info a {
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--muted);
       line-height: 1.5;
     }
@@ -254,6 +265,8 @@
     .downloads {
       display: grid;
       gap: 10px;
+      margin-top: auto;
+      padding-top: 16px;
     }
 
     .download-btn {
@@ -261,7 +274,7 @@
       padding: 11px 14px;
       border: 1px solid var(--line);
       background: #fff;
-      font-size: 0.98rem;
+      font-size: 0.97rem;
     }
 
     .section {
@@ -278,7 +291,7 @@
     }
 
     .text {
-      max-width: 900px;
+      max-width: 920px;
       font-size: 1.05rem;
       margin: 0 0 16px;
     }
@@ -338,6 +351,13 @@
     .highlight-box p {
       color: var(--accent-text);
       margin: 0 0 14px;
+    }
+
+    .subtle-intro {
+      max-width: 930px;
+      font-size: 1.03rem;
+      color: var(--text);
+      margin: 0 0 18px;
     }
 
     .list {
@@ -716,6 +736,20 @@
       text-align: center;
     }
 
+    @media (max-width: 1100px) {
+      :root {
+        --hero-panel-height: auto;
+      }
+
+      .hero {
+        grid-template-columns: 1.35fr 0.8fr;
+      }
+
+      .profile img {
+        max-width: 270px;
+      }
+    }
+
     @media (max-width: 980px) {
       .hero,
       .research-grid,
@@ -743,6 +777,15 @@
         white-space: normal;
       }
 
+      .hero-left,
+      .profile {
+        min-height: auto;
+      }
+
+      .profile img {
+        max-width: 300px;
+      }
+
       .map-panel {
         height: 520px;
       }
@@ -765,6 +808,10 @@
       .contact-row {
         gap: 16px;
       }
+
+      .profile img {
+        max-width: 240px;
+      }
     }
   </style>
 </head>
@@ -786,7 +833,7 @@
 
   <main class="wrap">
     <section class="hero">
-      <div>
+      <div class="hero-left">
         <h1 class="title">
           <span class="title-line">What <span class="title-highlight">makes</span></span>
           <span class="title-line"><span class="title-highlight">cities</span> better?</span>
@@ -942,64 +989,71 @@
     <section class="section" id="phd">
       <h2>PhD Research</h2>
 
+      <p class="subtle-intro">
+        My doctoral research asks why megaregions with similar connectivity conditions do not exhibit the same degree of functional integration. Rather than assuming that stronger connection automatically produces shared growth, the project examines how connectivity, centrality, and institutional cooperation interact to generate uneven regional outcomes.
+      </p>
+
       <div class="highlight-box">
         <h3>Research Direction</h3>
         <p>
-          My doctoral research examines whether functional integration in megaregions can truly be explained by the expansion of connectivity alone. While existing discussions often assume a linear sequence—more connection, greater integration, better outcomes—the Korean case suggests that similar levels of connectivity can still produce very different regional patterns.
-        </p>
-        <p>
-          The project therefore reinterprets the megaregion not as a simple connected space, but as a relational system in which connectivity, centrality, and cooperation interact. I focus on how these structural conditions shape different levels of functional integration within Korean megaregions, and on why the same accessibility conditions do not lead to the same degree of internal cohesion.
+          The project reinterprets the megaregion not as a simple connected space, but as a relational structure in which network position and governance arrangement matter. It focuses on how these structural conditions shape different levels of functional integration within Korean megaregions.
         </p>
       </div>
 
-      <div class="list" style="margin-top: 24px;">
-        <div class="item">
-          <div class="item-title">Core Question</div>
-          <div class="item-subtitle">
-            Why do megaregions with similar connectivity conditions show different levels of functional integration?
-          </div>
-          <div class="item-meta">
-            The study asks how centrality and cooperation condition the effect of connectivity, rather than treating connection itself as a sufficient explanation.
-          </div>
-        </div>
+      <div class="more-wrap">
+        <input class="more-toggle-input" type="checkbox" id="phd-more">
+        <label class="more-toggle" for="phd-more"></label>
+        <div class="more-content">
+          <div class="list">
+            <div class="item">
+              <div class="item-title">Core Question</div>
+              <div class="item-subtitle">
+                Why do megaregions with similar connectivity conditions show different levels of functional integration?
+              </div>
+              <div class="item-meta">
+                The study asks how centrality and cooperation condition the effect of connectivity, rather than treating connection itself as a sufficient explanation.
+              </div>
+            </div>
 
-        <div class="item">
-          <div class="item-title">Analytical Focus</div>
-          <div class="item-subtitle">
-            Connectivity, centrality, and cooperation as interacting structural variables
-          </div>
-          <div class="item-meta">
-            Connectivity is treated as realized functional interaction; accessibility as potential interaction capacity; centrality as dependence on higher-order core cities; and cooperation as an institutional mechanism that organizes how interurban relations operate.
-          </div>
-        </div>
+            <div class="item">
+              <div class="item-title">Analytical Focus</div>
+              <div class="item-subtitle">
+                Connectivity, centrality, and cooperation as interacting structural variables
+              </div>
+              <div class="item-meta">
+                Connectivity is treated as realized functional interaction; accessibility as potential interaction capacity; centrality as dependence on higher-order core cities; and cooperation as an institutional mechanism that organizes how interurban relations operate.
+              </div>
+            </div>
 
-        <div class="item">
-          <div class="item-title">Study Area</div>
-          <div class="item-subtitle">
-            Comparative analysis of major Korean megaregions
-          </div>
-          <div class="item-meta">
-            The dissertation compares the Seoul Capital Region, Chungcheong, Busan–Ulsan–Gyeongnam, and Jeolla, using functional rather than purely administrative regional definitions.
-          </div>
-        </div>
+            <div class="item">
+              <div class="item-title">Study Area</div>
+              <div class="item-subtitle">
+                Comparative analysis of major Korean megaregions
+              </div>
+              <div class="item-meta">
+                The dissertation compares the Seoul Capital Region, Chungcheong, Busan–Ulsan–Gyeongnam, and Jeolla, using functional rather than purely administrative regional definitions.
+              </div>
+            </div>
 
-        <div class="item">
-          <div class="item-title">Method</div>
-          <div class="item-subtitle">
-            Spatial analysis, commuting-based functional networks, cooperation indicators, and regression models
-          </div>
-          <div class="item-meta">
-            The research combines descriptive structural diagnosis with econometric modeling. It uses commuting OD flows to capture functional connectivity, accessibility measures based on intercity travel time, centrality indicators tied to dependence on Seoul and regional core cities, and weighted cooperation indicators based on formal and sustained intergovernmental collaboration.
-          </div>
-        </div>
+            <div class="item">
+              <div class="item-title">Method</div>
+              <div class="item-subtitle">
+                Spatial analysis, commuting-based functional networks, cooperation indicators, and regression models
+              </div>
+              <div class="item-meta">
+                The research combines descriptive structural diagnosis with econometric modeling. It uses commuting OD flows to capture functional connectivity, accessibility measures based on intercity travel time, centrality indicators tied to dependence on Seoul and regional core cities, and weighted cooperation indicators based on formal and sustained intergovernmental collaboration.
+              </div>
+            </div>
 
-        <div class="item">
-          <div class="item-title">Expected Contribution</div>
-          <div class="item-subtitle">
-            A conditional, structure-sensitive explanation of megaregional integration
-          </div>
-          <div class="item-meta">
-            Rather than assuming that connectivity automatically leads to integration, the dissertation aims to show that integration is contingent on regional hierarchy and cooperation structure. In doing so, it seeks to refine existing megaregion theory and provide a stronger basis for regional policy design.
+            <div class="item">
+              <div class="item-title">Expected Contribution</div>
+              <div class="item-subtitle">
+                A conditional, structure-sensitive explanation of megaregional integration
+              </div>
+              <div class="item-meta">
+                Rather than assuming that connectivity automatically leads to integration, the dissertation aims to show that integration is contingent on regional hierarchy and cooperation structure. In doing so, it seeks to refine existing megaregion theory and provide a stronger basis for regional policy design.
+              </div>
+            </div>
           </div>
         </div>
       </div>
